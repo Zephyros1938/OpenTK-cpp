@@ -1,0 +1,10 @@
+#pragma once
+
+#include <cstdint>
+namespace windowing {
+namespace graphicsframework {
+enum class  : uint32_t {
+  
+};
+}
+} // namespace windowing
