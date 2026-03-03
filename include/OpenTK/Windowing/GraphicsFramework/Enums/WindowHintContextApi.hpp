@@ -2,7 +2,7 @@
 
 #include <cstdint>
 
-namespace OpenTK::windowing::graphicsframework {
+namespace OpenTK::Windowing::GraphicsFramework {
 enum class WindowHintContextApi : uint32_t {
   ContextCreationApi = 0x0002200B,
 };

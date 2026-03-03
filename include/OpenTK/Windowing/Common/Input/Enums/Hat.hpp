@@ -1,6 +1,6 @@
 #pragma once
 
-namespace OpenTK::windowing::common::input {
+namespace OpenTK::Windowing::Common::Input {
 enum Hat : unsigned char {
   Centered = 0,
   Up = 1,

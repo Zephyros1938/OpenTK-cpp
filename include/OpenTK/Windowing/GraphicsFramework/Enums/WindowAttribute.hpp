@@ -1,7 +1,7 @@
 #pragma once
 
 #include <OpenTK/Windowing/GraphicsFramework/Enums/WindowHintBool.hpp>
-namespace OpenTK::windowing::graphicsframework {
+namespace OpenTK::Windowing::GraphicsFramework {
 enum class WindowAttribute : uint32_t {
   Resizable = static_cast<uint32_t>(WindowHintBool::Resizable),
   Decorated = static_cast<uint32_t>(WindowHintBool::Decorated),

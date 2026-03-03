@@ -1,7 +1,7 @@
 #pragma once
 #include <OpenTK/Ported/IntPtr.hpp>
 
-namespace OpenTK::windowing::common {
+namespace OpenTK::Windowing::Common {
 struct MonitorHandle {
   Ported::IntPtr Pointer;
   MonitorHandle(Ported::IntPtr ptr) : Pointer(ptr) {}

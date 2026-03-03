@@ -1,5 +1,5 @@
 #pragma once
 
-namespace OpenTK::windowing::common {
+namespace OpenTK::Windowing::Common {
 enum WindowBorder { Resizeable = 0, Fixed, Hidden };
 }

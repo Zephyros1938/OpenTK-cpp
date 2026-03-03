@@ -2,7 +2,7 @@
 
 #include <cstdint>
 
-namespace OpenTK::windowing::graphicsframework {
+namespace OpenTK::Windowing::GraphicsFramework {
 enum class KeyModifiers : uint32_t {
   Shift = 0x0001,
   Control = 0x0002,
@@ -12,4 +12,4 @@ enum class KeyModifiers : uint32_t {
   NumLock = 0x0020
 };
 
-} // namespace OpenTK::windowing::graphicsframework
+} // namespace OpenTK::Windowing::graphicsframework

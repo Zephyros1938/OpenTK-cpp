@@ -2,7 +2,7 @@
 
 #include <cstdint>
 
-namespace OpenTK::windowing::graphicsframework {
+namespace OpenTK::Windowing::GraphicsFramework {
 enum class MouseButton : uint32_t {
   Button1 = 0,
   Button2,

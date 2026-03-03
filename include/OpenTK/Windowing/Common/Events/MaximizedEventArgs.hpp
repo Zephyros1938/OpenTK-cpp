@@ -1,6 +1,6 @@
 #pragma once
 
-namespace OpenTK::windowing::common {
+namespace OpenTK::Windowing::Common {
 struct MaximizedEventArgs {
   bool IsMaximized;
   MaximizedEventArgs(bool isMaximized) : IsMaximized(isMaximized) {}

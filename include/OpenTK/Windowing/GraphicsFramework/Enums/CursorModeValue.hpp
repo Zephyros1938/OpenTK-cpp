@@ -1,6 +1,6 @@
 #pragma once
 
-namespace OpenTK::windowing::graphicsframework {
+namespace OpenTK::Windowing::GraphicsFramework {
 enum class CursorModeValue : int {
   CursorNormal = 0x00034001,
   CursorHidden = 0x00034002,

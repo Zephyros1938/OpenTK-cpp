@@ -1,5 +1,5 @@
 #pragma once
 
-namespace OpenTK::windowing::graphicsframework {
+namespace OpenTK::Windowing::GraphicsFramework {
 enum class CursorStateAttribute : int { Cursor = 0x00033001 };
 }

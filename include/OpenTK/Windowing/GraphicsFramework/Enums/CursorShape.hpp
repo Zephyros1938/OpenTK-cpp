@@ -1,6 +1,6 @@
 #pragma once
 
-namespace OpenTK::windowing::graphicsframework {
+namespace OpenTK::Windowing::GraphicsFramework {
 enum class CursorShape {
   Arrow = 0x00036001,
   IBeam = 0x00036002,

@@ -1,6 +1,6 @@
 #pragma once
 
-namespace OpenTK::windowing::common {
+namespace OpenTK::Windowing::Common {
 struct MouseMoveEventArgs {
   float Position[2], Delta[2];
   float X() const { return Position[0]; }

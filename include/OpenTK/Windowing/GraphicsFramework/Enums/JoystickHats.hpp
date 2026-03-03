@@ -1,6 +1,6 @@
 #pragma once
 
-namespace OpenTK::windowing::graphicsframework {
+namespace OpenTK::Windowing::GraphicsFramework {
 enum class JoystickHats : char {
   Centered = 0,
   Up = 1,

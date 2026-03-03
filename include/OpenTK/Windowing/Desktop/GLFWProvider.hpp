@@ -13,9 +13,9 @@ namespace OpenTK::Windowing::Desktop {
 class GLFWProvider {
 
   static void
-  DefaultErrorCallback(windowing::graphicsframework::ErrorCode errorCode,
+  DefaultErrorCallback(Windowing::GraphicsFramework::ErrorCode errorCode,
                        std::string description) {
-    throw new windowing::graphicsframework::GLFWException(
+    throw new Windowing::GraphicsFramework::GLFWException(
         "{description} (this is thrown from OpenTKs default GLFW error "
         "handler, if you find this exception inconvenient set your own error "
         "callback using GLFWProvider::SetErrorCallback)",
@@ -23,7 +23,7 @@ class GLFWProvider {
   }
   static inline bool _initialized = false;
   static inline std::thread::id _mainThreadId;
-  static inline windowing::graphicsframework::GLFWCallbacks::ErrorCallback
+  static inline Windowing::GraphicsFramework::GLFWCallbacks::ErrorCallback
       _errorCallback;
 
 public:
@@ -31,10 +31,10 @@ public:
   static inline bool HonorOpenTK4UseWayland = true;
 
   static void
-  SetErrorCallback(windowing::graphicsframework::GLFWCallbacks::ErrorCallback
+  SetErrorCallback(Windowing::GraphicsFramework::GLFWCallbacks::ErrorCallback
                        errorCallback) {
     _errorCallback = errorCallback;
-    windowing::graphicsframework::GLFW::SetErrorCallback(_errorCallback);
+    Windowing::GraphicsFramework::GLFW::SetErrorCallback(_errorCallback);
   }
   static bool IsOnMainThread() {
     return CheckForMainThread == false ||
@@ -65,14 +65,14 @@ public:
         std::string useWayland = useWaylandEnv ? useWaylandEnv : "";
 
         if (sessionType == "wayland" && useWayland == "0") {
-          windowing::graphicsframework::GLFW::InitHint(
-              windowing::graphicsframework::InitHintPlatform::Platform,
-              windowing::graphicsframework::Platform::X11);
+          Windowing::GraphicsFramework::GLFW::InitHint(
+              Windowing::GraphicsFramework::InitHintPlatform::Platform,
+              Windowing::GraphicsFramework::Platform::X11);
         }
       }
 #endif
-      windowing::graphicsframework::GLFW::SetErrorCallback(_errorCallback);
-      windowing::graphicsframework::GLFW::Init();
+      Windowing::GraphicsFramework::GLFW::SetErrorCallback(_errorCallback);
+      Windowing::GraphicsFramework::GLFW::Init();
     }
   }
 };

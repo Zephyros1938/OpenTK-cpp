@@ -1,6 +1,6 @@
 #pragma once
 
-namespace OpenTK::windowing::common {
+namespace OpenTK::Windowing::Common {
 struct JoystickEventArgs {
   int JoystickId;
   bool IsConnected;

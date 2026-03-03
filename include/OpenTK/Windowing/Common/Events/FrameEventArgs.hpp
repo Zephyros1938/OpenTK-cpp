@@ -1,6 +1,6 @@
 #pragma once
 
-namespace OpenTK::windowing::common {
+namespace OpenTK::Windowing::Common {
 struct FrameEventArgs {
   double Time;
   FrameEventArgs(double elapsed) : Time(elapsed) {};

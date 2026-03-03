@@ -6,7 +6,7 @@
 #include <bitset>
 #include <cstring>
 
-namespace OpenTK::windowing::graphicsframework {
+namespace OpenTK::Windowing::GraphicsFramework {
 class MouseState {
   const static int MaxButtons = 16;
   std::bitset<MaxButtons> _buttons;

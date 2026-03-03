@@ -4,7 +4,7 @@
 #include <bitset>
 #include <cstring>
 
-namespace OpenTK::windowing::graphicsframework {
+namespace OpenTK::Windowing::GraphicsFramework {
 class KeyboardState {
   std::bitset<(int)Keys::LastKey + 1> _keys;
   std::bitset<(int)Keys::LastKey + 1> _keysPrevious;

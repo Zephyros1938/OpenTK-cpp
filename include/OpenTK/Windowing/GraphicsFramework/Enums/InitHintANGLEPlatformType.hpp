@@ -2,7 +2,7 @@
 
 #include <cstdint>
 
-namespace OpenTK::windowing::graphicsframework {
+namespace OpenTK::Windowing::GraphicsFramework {
 enum class InitHintANGLEPlatformType : uint32_t {
   ANGLEPlatformType = 0x00050002
 };

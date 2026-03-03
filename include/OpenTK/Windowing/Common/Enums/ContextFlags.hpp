@@ -1,5 +1,5 @@
 #pragma once
 
-namespace OpenTK::windowing::common {
-enum ContextProfile { Default = 0, Debug, ForwardCompatible, Offscreen };
+namespace OpenTK::Windowing::Common {
+enum class ContextFlags { Default = 0, Debug, ForwardCompatible, Offscreen };
 }

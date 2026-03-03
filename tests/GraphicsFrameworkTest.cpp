@@ -3,7 +3,7 @@
 
 #include "OpenTK/Windowing/GraphicsFramework/GLFW.hpp"
 
-using namespace OpenTK::windowing::graphicsframework;
+using namespace OpenTK::Windowing::GraphicsFramework;
 
 int main() {
   // 1. Initialize GLFW

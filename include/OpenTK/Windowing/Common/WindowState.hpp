@@ -1,5 +1,5 @@
 #pragma once
 
-namespace OpenTK::windowing::common {
+namespace OpenTK::Windowing::Common {
 enum WindowState { Normal = 0, Minimized, Maximized, Fullscreen };
 }

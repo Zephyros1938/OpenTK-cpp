@@ -4,27 +4,27 @@
 #include <OpenTK/Windowing/GraphicsFramework/Enums/KeyModifiers.hpp>
 #include <OpenTK/Windowing/GraphicsFramework/Enums/Keys.hpp>
 
-namespace OpenTK::windowing::common {
+namespace OpenTK::Windowing::Common {
 struct KeyboardKeyEventArgs {
-  graphicsframework::Keys Key;
+  GraphicsFramework::Keys Key;
   int ScanCode;
-  graphicsframework::KeyModifiers Modifiers;
+  GraphicsFramework::KeyModifiers Modifiers;
   bool IsRepeat;
   bool Alt() const {
     return Ported::EnumUtil::HasFlag(Modifiers,
-                                     graphicsframework::KeyModifiers::Alt);
+                                     GraphicsFramework::KeyModifiers::Alt);
   }
   bool Control() const {
     return Ported::EnumUtil::HasFlag(Modifiers,
-                                     graphicsframework::KeyModifiers::Control);
+                                     GraphicsFramework::KeyModifiers::Control);
   }
   bool Shift() const {
     return Ported::EnumUtil::HasFlag(Modifiers,
-                                     graphicsframework::KeyModifiers::Shift);
+                                     GraphicsFramework::KeyModifiers::Shift);
   }
   bool Super() const {
     return Ported::EnumUtil::HasFlag(Modifiers,
-                                     graphicsframework::KeyModifiers::Super);
+                                     GraphicsFramework::KeyModifiers::Super);
   }
 };
 } // namespace OpenTK::windowing::common

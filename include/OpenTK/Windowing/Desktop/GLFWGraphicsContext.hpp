@@ -6,30 +6,30 @@
 #include "OpenTK/Windowing/GraphicsFramework/Window.hpp"
 namespace OpenTK::Windowing::Desktop {
 class GLFWGraphicsContext : IGLFWGraphicsContext {
-  windowing::graphicsframework::Window *_windowPtr;
+  Windowing::GraphicsFramework::Window *_windowPtr;
   int _swapInterval;
 
 public:
-  GLFWGraphicsContext(windowing::graphicsframework::Window *windowPtr)
-      : _windowPtr(windowPtr) {}
+  GLFWGraphicsContext(Windowing::GraphicsFramework::Window *windowPtr)
+      : _windowPtr(windowPtr), IGLFWGraphicsContext(windowPtr) {}
   bool IsCurrent() const {
-    return windowing::graphicsframework::GLFW::GetCurrentContext() ==
+    return Windowing::GraphicsFramework::GLFW::GetCurrentContext() ==
            _windowPtr;
   }
   Ported::Property<int> SwapInterval = Ported::Property<int>{
       [this]() { return _swapInterval; },
       [this](int v) {
-        windowing::graphicsframework::GLFW::SwapInterval(v);
+        Windowing::GraphicsFramework::GLFW::SwapInterval(v);
         _swapInterval = v;
       }};
   void SwapBuffers() {
-    windowing::graphicsframework::GLFW::SwapBuffers(_windowPtr);
+    Windowing::GraphicsFramework::GLFW::SwapBuffers(_windowPtr);
   }
   void MakeCurrent() {
-    windowing::graphicsframework::GLFW::MakeContextCurrent(_windowPtr);
+    Windowing::GraphicsFramework::GLFW::MakeContextCurrent(_windowPtr);
   }
   void MakeNoneCurrent() {
-    windowing::graphicsframework::GLFW::MakeContextCurrent(NULL);
+    Windowing::GraphicsFramework::GLFW::MakeContextCurrent(NULL);
   }
 };
 } // namespace OpenTK::Windowing::Desktop

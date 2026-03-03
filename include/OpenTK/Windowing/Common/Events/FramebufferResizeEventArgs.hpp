@@ -1,6 +1,6 @@
 #pragma once
 
-namespace OpenTK::windowing::common {
+namespace OpenTK::Windowing::Common {
 struct FramebufferResizeEventArgs {
   int Size[2];
   int Width() const { return Size[0]; }

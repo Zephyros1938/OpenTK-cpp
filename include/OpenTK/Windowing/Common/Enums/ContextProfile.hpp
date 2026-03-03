@@ -1,5 +1,5 @@
 #pragma once
 
-namespace OpenTK::windowing::common {
-enum ContextProfile { Any, Compatability, Core };
+namespace OpenTK::Windowing::Common {
+enum class ContextProfile { Any, Compatability, Core };
 }

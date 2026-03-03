@@ -2,7 +2,7 @@
 
 #include <cstdint>
 
-namespace OpenTK::windowing::graphicsframework {
+namespace OpenTK::Windowing::GraphicsFramework {
 enum class Keys : int32_t {
   Unknown = 0,
 

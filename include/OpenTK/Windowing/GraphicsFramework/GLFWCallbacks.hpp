@@ -10,7 +10,7 @@
 #include <OpenTK/Windowing/GraphicsFramework/Window.hpp>
 #include <cstdint>
 
-namespace OpenTK::windowing::graphicsframework {
+namespace OpenTK::Windowing::GraphicsFramework {
 namespace GLFWCallbacks {
 typedef void (*CharCallback)(Window *, uint32_t);
 typedef void (*CharModsCallback)(Window *, uint32_t, KeyModifiers);

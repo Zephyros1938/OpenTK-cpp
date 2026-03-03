@@ -1,5 +1,5 @@
 #pragma once
 
-namespace OpenTK::windowing::graphicsframework {
+namespace OpenTK::Windowing::GraphicsFramework {
 enum class JoystickInputAction : char { Release = 0, Press = 1 };
 }

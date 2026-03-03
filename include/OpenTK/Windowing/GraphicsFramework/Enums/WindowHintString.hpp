@@ -2,7 +2,7 @@
 
 #include <cstdint>
 
-namespace OpenTK::windowing::graphicsframework {
+namespace OpenTK::Windowing::GraphicsFramework {
 enum class WindowHintString : int32_t {
   CocoaFrameName = 0x00023002,
   X11ClassName = 0x00024001,

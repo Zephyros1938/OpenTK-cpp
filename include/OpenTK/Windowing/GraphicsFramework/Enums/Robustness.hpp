@@ -2,7 +2,7 @@
 
 #include <cstdint>
 
-namespace OpenTK::windowing::graphicsframework {
+namespace OpenTK::Windowing::GraphicsFramework {
 enum class Robustness : int32_t {
   NoRobustness = 0,
   NoResetNotification = 0x00031001,

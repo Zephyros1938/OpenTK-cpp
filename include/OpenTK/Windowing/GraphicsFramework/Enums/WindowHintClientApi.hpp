@@ -2,6 +2,6 @@
 
 #include <cstdint>
 
-namespace OpenTK::windowing::graphicsframework {
+namespace OpenTK::Windowing::GraphicsFramework {
 enum class WindowHintClientApi : uint32_t { ClientApi = 0x00022001 };
 }

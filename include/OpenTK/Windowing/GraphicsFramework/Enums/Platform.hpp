@@ -2,7 +2,7 @@
 
 #include <cstdint>
 
-namespace OpenTK::windowing::graphicsframework {
+namespace OpenTK::Windowing::GraphicsFramework {
 enum class Platform : uint32_t {
   Any = 0x00060000,
   Win32 = 0x00060001,

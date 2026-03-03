@@ -2,7 +2,7 @@
 
 #include <cstdint>
 
-namespace OpenTK::windowing::graphicsframework {
+namespace OpenTK::Windowing::GraphicsFramework {
 enum class ANGLEPlatformType : uint32_t {
   None = 0x00037001,
   OpenGL = 0x00037002,

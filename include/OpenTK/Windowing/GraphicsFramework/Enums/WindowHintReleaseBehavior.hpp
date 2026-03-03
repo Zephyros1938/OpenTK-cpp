@@ -2,7 +2,7 @@
 
 #include <cstdint>
 
-namespace OpenTK::windowing::graphicsframework {
+namespace OpenTK::Windowing::GraphicsFramework {
 enum class WindowHintReleaseBehavior : uint32_t {
   ContextReleaseBehavior = 0x00022009
 };

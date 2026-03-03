@@ -2,7 +2,7 @@
 
 #include <string>
 
-namespace OpenTK::windowing::common {
+namespace OpenTK::Windowing::Common {
 struct TextInputEventArgs {
   int Unicode;
   std::string AsString() { return std::to_string(Unicode); }

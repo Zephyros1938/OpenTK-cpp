@@ -2,7 +2,7 @@
 
 #include <cstdint>
 
-namespace OpenTK::windowing::graphicsframework {
+namespace OpenTK::Windowing::GraphicsFramework {
 enum class InitHintBool : uint32_t {
   JoystickHatButtons = 0x00050001,
   CocoaChdirResources = 0x00051001,

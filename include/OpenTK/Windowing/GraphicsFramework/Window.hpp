@@ -3,7 +3,7 @@
 #include <GLFW/glfw3.h>
 #include <stdexcept>
 
-namespace OpenTK::windowing::graphicsframework {
+namespace OpenTK::Windowing::GraphicsFramework {
 struct Window {
   GLFWwindow *handle;
   Window(GLFWwindow *w) : handle(w) {}

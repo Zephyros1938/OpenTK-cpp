@@ -1,5 +1,5 @@
 #pragma once
 
-namespace OpenTK::windowing::common {
+namespace OpenTK::Windowing::Common {
 enum CursorState { Confined = 0, Grabbed, Hidden, Normal };
 }

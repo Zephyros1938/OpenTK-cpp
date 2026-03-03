@@ -5,7 +5,7 @@
 #include <exception>
 #include <stdexcept>
 
-namespace OpenTK::windowing::graphicsframework {
+namespace OpenTK::Windowing::GraphicsFramework {
 class GLFWException : std::runtime_error {
 public:
   ErrorCode ErrorCode;

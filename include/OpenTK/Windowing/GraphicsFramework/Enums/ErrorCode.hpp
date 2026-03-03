@@ -1,6 +1,6 @@
 #pragma once
 
-namespace OpenTK::windowing::graphicsframework {
+namespace OpenTK::Windowing::GraphicsFramework {
 enum class ErrorCode : int {
   NoError = 0,
   NotInitialized = 0x00010001,

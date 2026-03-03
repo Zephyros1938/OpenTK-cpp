@@ -1,6 +1,6 @@
 #pragma once
 
-namespace OpenTK::windowing::common {
+namespace OpenTK::Windowing::Common {
 struct FocusChangedEventArgs {
   bool IsFocused;
   FocusChangedEventArgs(bool isFocused) : IsFocused(isFocused) {}

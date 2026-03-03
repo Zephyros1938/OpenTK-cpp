@@ -60,25 +60,25 @@
 #define IntPtr OpenTK::Ported::IntPtr
 #define ReadOnlySpan OpenTK::Ported::ReadOnlySpan
 
-namespace OpenTK::windowing::graphicsframework {
+namespace OpenTK::Windowing::GraphicsFramework {
 class GLFW {
 public:
   const int DontCare = -1;
   const int AnyPosition = 0x80000000;
   static bool Init() { return glfwInit() == GLFW_TRUE; }
   static void Terminate() { glfwTerminate(); }
-  static void InitHint(graphicsframework::InitHintBool h, bool v) {
+  static void InitHint(GraphicsFramework::InitHintBool h, bool v) {
     glfwInitHint((int)h, v ? GLFW_TRUE : GLFW_FALSE);
   }
-  static void InitHint(graphicsframework::InitHintInt h, int v) {
+  static void InitHint(GraphicsFramework::InitHintInt h, int v) {
     glfwInitHint((int)h, v);
   }
-  static void InitHint(graphicsframework::InitHintPlatform h,
-                       graphicsframework::Platform v) {
+  static void InitHint(GraphicsFramework::InitHintPlatform h,
+                       GraphicsFramework::Platform v) {
     glfwInitHint((int)h, (int)v);
   }
-  static void InitHint(graphicsframework::InitHintANGLEPlatformType h,
-                       graphicsframework::ANGLEPlatformType v) {
+  static void InitHint(GraphicsFramework::InitHintANGLEPlatformType h,
+                       GraphicsFramework::ANGLEPlatformType v) {
     glfwInitHint((int)h, (int)v);
   }
   static void InitAllocator(GLFWallocator *allocator) {

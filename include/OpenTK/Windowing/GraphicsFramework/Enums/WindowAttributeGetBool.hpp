@@ -3,7 +3,7 @@
 #include <OpenTK/Windowing/GraphicsFramework/Enums/WindowHintBool.hpp>
 #include <cstdint>
 
-namespace OpenTK::windowing::graphicsframework {
+namespace OpenTK::Windowing::GraphicsFramework {
 enum class WindowAttributeGetBool : uint32_t {
   Focused = static_cast<uint32_t>(WindowHintBool::Focused),
   Iconified = static_cast<uint32_t>(WindowHintBool::Iconified),

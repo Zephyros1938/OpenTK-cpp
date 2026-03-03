@@ -1,5 +1,5 @@
 #pragma once
 
-namespace OpenTK::windowing::graphicsframework {
+namespace OpenTK::Windowing::GraphicsFramework {
 enum class RawMouseMotionAttribute { RawMouseMotion = 0x00033005 };
 }

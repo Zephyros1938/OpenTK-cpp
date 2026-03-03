@@ -5,20 +5,20 @@
 #include <OpenTK/Windowing/GraphicsFramework/Enums/Keys.hpp>
 #include <OpenTK/Windowing/GraphicsFramework/Enums/MouseButton.hpp>
 
-namespace OpenTK::windowing::common {
+namespace OpenTK::Windowing::Common {
 struct MouseButtonEventArgs {
-  graphicsframework::MouseButton _Button;
-  graphicsframework::InputAction _Action;
-  graphicsframework::KeyModifiers _Modifiers;
-  graphicsframework::MouseButton Button() const { return _Button; }
-  graphicsframework::InputAction Action() const { return _Action; }
-  graphicsframework::KeyModifiers Modifiers() const { return _Modifiers; }
+  GraphicsFramework::MouseButton _Button;
+  GraphicsFramework::InputAction _Action;
+  GraphicsFramework::KeyModifiers _Modifiers;
+  GraphicsFramework::MouseButton Button() const { return _Button; }
+  GraphicsFramework::InputAction Action() const { return _Action; }
+  GraphicsFramework::KeyModifiers Modifiers() const { return _Modifiers; }
   bool IsPressed() const {
-    return _Action != graphicsframework::InputAction::Release;
+    return _Action != GraphicsFramework::InputAction::Release;
   }
-  MouseButtonEventArgs(graphicsframework::MouseButton button,
-                       graphicsframework::InputAction action,
-                       graphicsframework::KeyModifiers modifiers)
+  MouseButtonEventArgs(GraphicsFramework::MouseButton button,
+                       GraphicsFramework::InputAction action,
+                       GraphicsFramework::KeyModifiers modifiers)
       : _Button(button), _Action(action), _Modifiers(modifiers) {}
 };
 } // namespace OpenTK::windowing::common

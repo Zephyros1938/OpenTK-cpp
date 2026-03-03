@@ -3,7 +3,7 @@
 #include <GLFW/glfw3.h>
 #include <cstring>
 
-namespace OpenTK::windowing::graphicsframework {
+namespace OpenTK::Windowing::GraphicsFramework {
 struct GamepadState {
   unsigned char Buttons[15];
   float Axes[6];

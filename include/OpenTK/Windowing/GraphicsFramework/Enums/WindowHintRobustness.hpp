@@ -2,6 +2,6 @@
 
 #include <cstdint>
 
-namespace OpenTK::windowing::graphicsframework {
+namespace OpenTK::Windowing::GraphicsFramework {
 enum class WindowHintRobustness : uint32_t { ContextRobustness = 0x00022005 };
 }

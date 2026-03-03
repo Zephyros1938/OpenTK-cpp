@@ -1,7 +1,7 @@
 #pragma once
 
 #include <OpenTK/Windowing/Common/MonitorHandle.hpp>
-namespace OpenTK::windowing::common {
+namespace OpenTK::Windowing::Common {
 struct MonitorEventArgs {
   MonitorHandle Monitor;
   bool IsConnected;

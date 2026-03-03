@@ -2,7 +2,7 @@
 
 #include <cstdint>
 
-namespace OpenTK::windowing::graphicsframework {
+namespace OpenTK::Windowing::GraphicsFramework {
 enum class WindowHintInt : uint32_t {
   PositionX = 0x0002000E,
   PositionY = 0x0002000F,

@@ -2,7 +2,7 @@
 
 #include <GLFW/glfw3.h>
 
-namespace OpenTK::windowing::graphicsframework {
+namespace OpenTK::Windowing::GraphicsFramework {
 struct Cursor {
   GLFWcursor *handle;
   Cursor(GLFWcursor *i) : handle(i) {}

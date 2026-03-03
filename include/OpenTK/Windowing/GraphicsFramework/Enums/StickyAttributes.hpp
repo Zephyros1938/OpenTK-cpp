@@ -1,6 +1,6 @@
 #pragma once
 
-namespace OpenTK::windowing::graphicsframework {
+namespace OpenTK::Windowing::GraphicsFramework {
 enum class StickyAttributes {
   StickyKeys = 0x00033002,
   StickyMouseButtons = 0x00033003

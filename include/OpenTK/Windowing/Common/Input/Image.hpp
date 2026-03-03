@@ -1,8 +1,10 @@
 #pragma once
 
+#include "OpenTK/Ported/IReadOnlyList.hpp"
+#include <GLFW/glfw3.h>
 #include <stdexcept>
 
-namespace OpenTK::windowing::common::input {
+namespace OpenTK::Windowing::Common::Input {
 class Image {
 public:
   int Width, Height;
@@ -20,5 +22,9 @@ public:
     Height = height;
     Data = data;
   }
+  operator GLFWimage *() const {
+    return new GLFWimage{this->Width, this->Height,
+                         (unsigned char *)this->Data};
+  }
 };
-} // namespace OpenTK::windowing::common::input
+} // namespace OpenTK::Windowing::Common::Input
