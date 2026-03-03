@@ -12,6 +12,14 @@ Expect very non C++ syntax, I am porting directly from what OpenTK's source code
 
 I do not claim any credit for OpenTK's work, this is simply a port of their project and I do not claim ownership over their code.
 
+### Notice
+
+Due to me using the native GLFW library for linux, this project may not work on Windows.
+
+I only use Hyprland, so I cannot test on other display managers/compositors.
+
+Please feel free to [open an issue](https://github.com/Zephyros1938/OpenTK-cpp/issues/new) if there are any bugs you find, I'll try to patch them as soon as I can.
+
 ## License & Attribution
 
 This project is a C++ port of the [OpenTK](https://github.com/opentk/opentk) library. 
