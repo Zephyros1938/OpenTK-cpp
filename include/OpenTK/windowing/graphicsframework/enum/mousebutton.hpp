@@ -2,9 +2,7 @@
 
 #include <cstdint>
 
-namespace OpenTK {
-namespace windowing {
-namespace graphicsframework {
+namespace OpenTK::windowing::graphicsframework {
 enum class MouseButton : uint32_t {
   Button1 = 0,
   Button2,
@@ -20,6 +18,3 @@ enum class MouseButton : uint32_t {
   Last = Button8
 };
 }
-} // namespace windowing
-
-} // namespace OpenTK

@@ -1,12 +1,5 @@
 #pragma once
 
-#include <cstdint>
-
-namespace OpenTK {
-namespace windowing {
-namespace graphicsframework {
+namespace OpenTK::windowing::graphicsframework {
 enum class JoystickInputAction : char { Release = 0, Press = 1 };
 }
-} // namespace windowing
-
-} // namespace OpenTK

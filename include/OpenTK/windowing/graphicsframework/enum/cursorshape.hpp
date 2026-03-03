@@ -1,10 +1,6 @@
 #pragma once
 
-#include <cstdint>
-
-namespace OpenTK {
-namespace windowing {
-namespace graphicsframework {
+namespace OpenTK::windowing::graphicsframework {
 enum class CursorShape {
   Arrow = 0x00036001,
   IBeam = 0x00036002,
@@ -21,6 +17,3 @@ enum class CursorShape {
   Hand = PointingHand
 };
 }
-} // namespace windowing
-
-} // namespace OpenTK

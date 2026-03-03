@@ -1,10 +1,6 @@
 #pragma once
 
-#include <cstdint>
-
-namespace OpenTK {
-namespace windowing {
-namespace graphicsframework {
+namespace OpenTK::windowing::graphicsframework {
 enum class CursorModeValue : int {
   CursorNormal = 0x00034001,
   CursorHidden = 0x00034002,
@@ -13,6 +9,3 @@ enum class CursorModeValue : int {
 
 };
 }
-} // namespace windowing
-
-} // namespace OpenTK

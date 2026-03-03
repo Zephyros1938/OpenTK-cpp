@@ -1,9 +1,6 @@
 #pragma once
 
-namespace OpenTK {
-
-namespace windowing {
-namespace common {
+namespace OpenTK::windowing::common {
 struct ResizeEventArgs {
   float Size[2];
   float Width() const { return Size[0]; }
@@ -11,7 +8,4 @@ struct ResizeEventArgs {
   ResizeEventArgs(float size[2]) : Size(*size) {}
   ResizeEventArgs(float width, float height) : Size{width, height} {}
 };
-} // namespace common
-} // namespace windowing
-
-} // namespace OpenTK
+} // namespace OpenTK::windowing::common

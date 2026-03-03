@@ -1,14 +1,8 @@
 #pragma once
 
-namespace OpenTK {
-
-namespace windowing {
-namespace common {
+namespace OpenTK::windowing::common {
 struct MinimizedEventArgs {
   bool IsMinimized;
   MinimizedEventArgs(bool isMinimized) : IsMinimized(isMinimized) {}
 };
-} // namespace common
-} // namespace windowing
-
-} // namespace OpenTK
+} // namespace OpenTK::windowing::common

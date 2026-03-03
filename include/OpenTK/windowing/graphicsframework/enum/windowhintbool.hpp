@@ -2,9 +2,7 @@
 
 #include <cstdint>
 
-namespace OpenTK {
-namespace windowing {
-namespace graphicsframework {
+namespace OpenTK::windowing::graphicsframework {
 enum class WindowHintBool : uint32_t {
   Focused = 0x00020001,
   Iconified = 0x00020002,
@@ -33,6 +31,3 @@ enum class WindowHintBool : uint32_t {
   SrgbCapable = 0x0002100E
 };
 }
-} // namespace windowing
-
-} // namespace OpenTK

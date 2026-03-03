@@ -2,16 +2,11 @@
 
 #include <GLFW/glfw3.h>
 
-namespace OpenTK {
-namespace windowing {
-namespace graphicsframework {
+namespace OpenTK::windowing::graphicsframework {
 struct Cursor {
   GLFWcursor *handle;
   Cursor(GLFWcursor *i) : handle(i) {}
 
   operator GLFWcursor *() { return handle; }
 };
-} // namespace graphicsframework
-} // namespace windowing
-
-} // namespace OpenTK
+} // namespace OpenTK::windowing::graphicsframework

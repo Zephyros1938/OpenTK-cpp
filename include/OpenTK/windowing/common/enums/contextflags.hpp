@@ -1,11 +1,5 @@
 #pragma once
 
-namespace OpenTK {
-
-namespace windowing {
-namespace common {
+namespace OpenTK::windowing::common {
 enum ContextProfile { Default = 0, Debug, ForwardCompatible, Offscreen };
 }
-} // namespace windowing
-
-} // namespace OpenTK

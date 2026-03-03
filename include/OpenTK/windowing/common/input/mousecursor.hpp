@@ -3,10 +3,7 @@
 #include <OpenTK/windowing/common/input/image.hpp>
 #include <stdexcept>
 
-namespace OpenTK {
-namespace windowing {
-namespace common {
-namespace input {
+namespace OpenTK::windowing::common::input {
 
 class MouseCursor : private Image {
   enum class StandardShape {
@@ -80,8 +77,4 @@ private:
   MouseCursor(StandardShape shape)
       : Image(0, 0, {}), Shape(shape), X(0), Y(0) {}
 }; // namespace input
-} // namespace input
-} // namespace common
-} // namespace windowing
-
-} // namespace OpenTK
+} // namespace OpenTK::windowing::common::input

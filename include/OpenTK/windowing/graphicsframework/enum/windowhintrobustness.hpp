@@ -2,11 +2,6 @@
 
 #include <cstdint>
 
-namespace OpenTK {
-namespace windowing {
-namespace graphicsframework {
+namespace OpenTK::windowing::graphicsframework {
 enum class WindowHintRobustness : uint32_t { ContextRobustness = 0x00022005 };
 }
-} // namespace windowing
-
-} // namespace OpenTK

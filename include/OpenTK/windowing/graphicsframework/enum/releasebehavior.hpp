@@ -2,15 +2,10 @@
 
 #include <cstdint>
 
-namespace OpenTK {
-namespace windowing {
-namespace graphicsframework {
+namespace OpenTK::windowing::graphicsframework {
 enum class ReleaseBehavior : int32_t {
   Any = 0,
   Flush = 0x00035001,
   None = 0x00035002
 };
 }
-} // namespace windowing
-
-} // namespace OpenTK

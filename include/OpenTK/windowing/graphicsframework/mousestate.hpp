@@ -6,9 +6,7 @@
 #include <bitset>
 #include <cstring>
 
-namespace OpenTK {
-namespace windowing {
-namespace graphicsframework {
+namespace OpenTK::windowing::graphicsframework {
 class MouseState {
   const static int MaxButtons = 16;
   std::bitset<MaxButtons> _buttons;
@@ -61,7 +59,4 @@ public:
     glfwGetCursorPos(*windowPtr, &x, &y);
   }
 };
-} // namespace graphicsframework
-} // namespace windowing
-
-} // namespace OpenTK
+} // namespace OpenTK::windowing::graphicsframework

@@ -3,9 +3,7 @@
 #include "windowhint.hpp"
 #include <cstdint>
 
-namespace OpenTK {
-namespace windowing {
-namespace graphicsframework {
+namespace OpenTK::windowing::graphicsframework {
 enum class WindowAttributeGetInt : uint32_t {
   ContextVersionMajor =
       static_cast<uint32_t>(WindowHintInt::ContextVersionMinor),
@@ -14,6 +12,3 @@ enum class WindowAttributeGetInt : uint32_t {
   ContextVersionRevision = static_cast<uint32_t>(WindowHintInt::ContextRevision)
 };
 }
-} // namespace windowing
-
-} // namespace OpenTK

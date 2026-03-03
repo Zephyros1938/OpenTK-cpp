@@ -1,9 +1,6 @@
 #pragma once
 
-namespace OpenTK {
-
-namespace windowing {
-namespace common {
+namespace OpenTK::windowing::common {
 struct WindowPositionEventArgs {
   float Position[2];
   float X() const { return Position[0]; }
@@ -11,7 +8,4 @@ struct WindowPositionEventArgs {
   WindowPositionEventArgs(float position[2]) : Position(*position) {}
   WindowPositionEventArgs(float x, float y) : Position{x, y} {}
 };
-} // namespace common
-} // namespace windowing
-
-} // namespace OpenTK
+} // namespace OpenTK::windowing::common

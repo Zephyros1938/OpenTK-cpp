@@ -1,9 +1,6 @@
 #pragma once
 
-namespace OpenTK {
-
-namespace windowing {
-namespace common {
+namespace OpenTK::windowing::common {
 struct MouseWheelEventArgs {
   float Offset[2];
   float OffsetX() const { return Offset[0]; }
@@ -12,7 +9,4 @@ struct MouseWheelEventArgs {
   MouseWheelEventArgs(float offsetX, float offsetY)
       : Offset{offsetX, offsetY} {}
 };
-} // namespace common
-} // namespace windowing
-
-} // namespace OpenTK
+} // namespace OpenTK::windowing::common

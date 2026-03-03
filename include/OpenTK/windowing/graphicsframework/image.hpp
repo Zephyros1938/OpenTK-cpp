@@ -1,9 +1,7 @@
 #pragma once
 #include <GLFW/glfw3.h>
 
-namespace OpenTK {
-namespace windowing {
-namespace graphicsframework {
+namespace OpenTK::windowing::graphicsframework {
 struct Image {
 public:
   int Width, Height;
@@ -14,7 +12,4 @@ public:
     return new GLFWimage{this->Width, this->Height, this->Pixels};
   }
 };
-} // namespace graphicsframework
-} // namespace windowing
-
-} // namespace OpenTK
+} // namespace OpenTK::windowing::graphicsframework

@@ -1,9 +1,7 @@
 #pragma once
 #include <GLFW/glfw3.h>
 
-namespace OpenTK {
-namespace windowing {
-namespace graphicsframework {
+namespace OpenTK::windowing::graphicsframework {
 struct GammaRamp {
 public:
   unsigned short *Red, *Green, *Blue;
@@ -15,7 +13,4 @@ public:
       : Red(mode->red), Green(mode->green), Blue(mode->blue), Size(mode->size) {
   }
 };
-} // namespace graphicsframework
-} // namespace windowing
-
-} // namespace OpenTK
+} // namespace OpenTK::windowing::graphicsframework

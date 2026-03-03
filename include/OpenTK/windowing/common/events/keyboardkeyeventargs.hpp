@@ -4,10 +4,7 @@
 #include <OpenTK/windowing/graphicsframework/enum/keymodifiers.hpp>
 #include <OpenTK/windowing/graphicsframework/enum/keys.hpp>
 
-namespace OpenTK {
-
-namespace windowing {
-namespace common {
+namespace OpenTK::windowing::common {
 struct KeyboardKeyEventArgs {
   graphicsframework::Keys Key;
   int ScanCode;
@@ -30,7 +27,4 @@ struct KeyboardKeyEventArgs {
                                      graphicsframework::KeyModifiers::Super);
   }
 };
-} // namespace common
-} // namespace windowing
-
-} // namespace OpenTK
+} // namespace OpenTK::windowing::common

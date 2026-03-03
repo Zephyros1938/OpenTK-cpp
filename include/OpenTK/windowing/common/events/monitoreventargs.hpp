@@ -2,10 +2,7 @@
 
 #include <OpenTK/windowing/common/monitorhandle.hpp>
 
-namespace OpenTK {
-
-namespace windowing {
-namespace common {
+namespace OpenTK::windowing::common {
 struct MonitorEventArgs {
   MonitorHandle Monitor;
   bool IsConnected;
@@ -13,7 +10,4 @@ struct MonitorEventArgs {
   MonitorEventArgs(MonitorHandle monitor, bool isConnected)
       : Monitor(monitor), IsConnected(isConnected) {}
 };
-} // namespace common
-} // namespace windowing
-
-} // namespace OpenTK
+} // namespace OpenTK::windowing::common

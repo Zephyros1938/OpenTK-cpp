@@ -2,11 +2,6 @@
 
 #include <cstdint>
 
-namespace OpenTK {
-namespace windowing {
-namespace graphicsframework {
+namespace OpenTK::windowing::graphicsframework {
 enum class InitHintPlatform : uint32_t { Platform_ = 0x00050003 };
 }
-} // namespace windowing
-
-} // namespace OpenTK

@@ -1,9 +1,6 @@
 #pragma once
 
-namespace OpenTK {
-
-namespace windowing {
-namespace graphicsframework {
+namespace OpenTK::windowing::graphicsframework {
 enum class ErrorCode : int {
   NoError = 0,
   NotInitialized = 0x00010001,
@@ -22,6 +19,3 @@ enum class ErrorCode : int {
   PlatformUnavailable = 0x0001000E,
 };
 }
-} // namespace windowing
-
-} // namespace OpenTK

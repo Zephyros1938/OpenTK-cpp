@@ -56,10 +56,7 @@ template <typename T> using ReadOnlySpan = std::span<const T>;
 
 using IntPtr = OpenTK::Ported::IntPtr;
 
-namespace OpenTK {
-
-namespace windowing {
-namespace graphicsframework {
+namespace OpenTK::windowing::graphicsframework {
 class GLFW {
 public:
   const int DontCare = -1;
@@ -463,24 +460,22 @@ public:
   static IntPtr
   SetWindowMaximizeCallback(Window *w,
                             GLFWCallbacks::WindowMaximizeCallback cb) {
-    return (IntPtr)glfwSetWindowMaximizeCallback(
-        *w, (GLFWwindowmaximizefun)cb);
+    return (IntPtr)glfwSetWindowMaximizeCallback(*w, (GLFWwindowmaximizefun)cb);
   }
   static IntPtr
   SetFrameBufferSizeCallback(Window *w,
                              GLFWCallbacks::FramebufferSizeCallback cb) {
-    return (IntPtr)glfwSetFramebufferSizeCallback(
-        *w, (GLFWframebuffersizefun)cb);
+    return (IntPtr)glfwSetFramebufferSizeCallback(*w,
+                                                  (GLFWframebuffersizefun)cb);
   }
   static void PollEvents() { glfwPollEvents(); }
   static void PostEmptyEvent() { glfwPostEmptyEvent(); }
   static void RestoreWindow(Window *w) { glfwRestoreWindow(*w); }
-  static IntPtr SetCharCallback(Window *w,
-                                      GLFWCallbacks::CharCallback cb) {
+  static IntPtr SetCharCallback(Window *w, GLFWCallbacks::CharCallback cb) {
     return (IntPtr)glfwSetCharCallback(*w, (GLFWcharfun)cb);
   }
   static IntPtr SetCharModsCallback(Window *w,
-                                          GLFWCallbacks::CharModsCallback cb) {
+                                    GLFWCallbacks::CharModsCallback cb) {
     return (IntPtr)glfwSetCharModsCallback(*w, (GLFWcharmodsfun)cb);
   }
   static void SetClipboardString(Window *w, std::string data) {
@@ -490,16 +485,15 @@ public:
   static void SetClipboardStringRaw(Window *w, const char *data) {
     glfwSetClipboardString(*w, data);
   }
-  static IntPtr
-  SetCursorEnterCallback(Window *w, GLFWCallbacks::CursorEnterCallback cb) {
+  static IntPtr SetCursorEnterCallback(Window *w,
+                                       GLFWCallbacks::CursorEnterCallback cb) {
     return (IntPtr)glfwSetCursorEnterCallback(*w, (GLFWcursorenterfun)cb);
   }
-  static IntPtr
-  SetCursorPosCallback(Window *w, GLFWCallbacks::CursorPosCallback cb) {
+  static IntPtr SetCursorPosCallback(Window *w,
+                                     GLFWCallbacks::CursorPosCallback cb) {
     return (IntPtr)glfwSetCursorPosCallback(*w, (GLFWcursorposfun)cb);
   }
-  static IntPtr SetDropCallback(Window *w,
-                                      GLFWCallbacks::DropCallback cb) {
+  static IntPtr SetDropCallback(Window *w, GLFWCallbacks::DropCallback cb) {
     return (IntPtr)glfwSetDropCallback(*w, (GLFWdropfun)cb);
   }
   static IntPtr SetErrorCallback(GLFWCallbacks::ErrorCallback cb) {
@@ -525,23 +519,22 @@ public:
   static IntPtr SetKeyCallback(Window *w, GLFWCallbacks::KeyCallback cb) {
     return (IntPtr)glfwSetKeyCallback(*w, (GLFWkeyfun)cb);
   }
-  static IntPtr SetScrollCallback(Window *w,
-                                        GLFWCallbacks::ScrollCallback cb) {
+  static IntPtr SetScrollCallback(Window *w, GLFWCallbacks::ScrollCallback cb) {
     return (IntPtr)glfwSetScrollCallback(*w, (GLFWscrollfun)cb);
   }
   static IntPtr SetMonitorCallback(GLFWCallbacks::MonitorCallback cb) {
     return (IntPtr)glfwSetMonitorCallback((GLFWmonitorfun)cb);
   }
-  static IntPtr
-  SetMouseButtonCallback(Window *w, GLFWCallbacks::MouseButtonCallback cb) {
+  static IntPtr SetMouseButtonCallback(Window *w,
+                                       GLFWCallbacks::MouseButtonCallback cb) {
     return (IntPtr)glfwSetMouseButtonCallback(*w, (GLFWmousebuttonfun)cb);
   }
-  static IntPtr
-  SetWindowCloseCallback(Window *w, GLFWCallbacks::WindowCloseCallback cb) {
+  static IntPtr SetWindowCloseCallback(Window *w,
+                                       GLFWCallbacks::WindowCloseCallback cb) {
     return (IntPtr)glfwSetWindowCloseCallback(*w, (GLFWwindowclosefun)cb);
   }
-  static IntPtr
-  SetWindowFocusCallback(Window *w, GLFWCallbacks::WindowFocusCallback cb) {
+  static IntPtr SetWindowFocusCallback(Window *w,
+                                       GLFWCallbacks::WindowFocusCallback cb) {
     return (IntPtr)glfwSetWindowFocusCallback(*w, (GLFWwindowfocusfun)cb);
   }
   static void SetWindowIcon(Window *w, ReadOnlySpan<Image> images) {
@@ -555,8 +548,7 @@ public:
   }
   static IntPtr
   SetWindowIconifyCallback(Window *w, GLFWCallbacks::WindowIconifyCallback cb) {
-    return (IntPtr)glfwSetWindowIconifyCallback(*w,
-                                                      (GLFWwindowiconifyfun)cb);
+    return (IntPtr)glfwSetWindowIconifyCallback(*w, (GLFWwindowiconifyfun)cb);
   }
   static void SetWindowMonitor(Window *w, Monitor *m, int x, int y, int width,
                                int height, int refreshRate) {
@@ -565,20 +557,19 @@ public:
   static void SetWindowPos(Window *w, int x, int y) {
     glfwSetWindowPos(*w, x, y);
   }
-  static IntPtr
-  SetWindowPosCallback(Window *w, GLFWCallbacks::WindowPosCallback cb) {
+  static IntPtr SetWindowPosCallback(Window *w,
+                                     GLFWCallbacks::WindowPosCallback cb) {
     return (IntPtr)glfwSetWindowPosCallback(*w, (GLFWwindowposfun)cb);
   }
   static IntPtr
   SetWindowRefreshCallback(Window *w, GLFWCallbacks::WindowRefreshCallback cb) {
-    return (IntPtr)glfwSetWindowRefreshCallback(*w,
-                                                      (GLFWwindowrefreshfun)cb);
+    return (IntPtr)glfwSetWindowRefreshCallback(*w, (GLFWwindowrefreshfun)cb);
   }
   static void SetWindowSize(Window *w, int width, int height) {
     glfwSetWindowSize(*w, width, height);
   }
-  static IntPtr
-  SetWindowSiezCallback(Window *w, GLFWCallbacks::WindowSizeCallback cb) {
+  static IntPtr SetWindowSiezCallback(Window *w,
+                                      GLFWCallbacks::WindowSizeCallback cb) {
     return (IntPtr)glfwSetWindowSizeCallback(*w, (GLFWwindowsizefun)cb);
   }
   static void SetWindowShouldClose(Window *w, bool value) {
@@ -643,7 +634,4 @@ public:
   }
   // INFO: GLFW native support will not be ported as this is already handled
 };
-} // namespace graphicsframework
-} // namespace windowing
-
-} // namespace OpenTK
+} // namespace OpenTK::windowing::graphicsframework

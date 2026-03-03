@@ -2,9 +2,7 @@
 
 #include <cstdint>
 
-namespace OpenTK {
-namespace windowing {
-namespace graphicsframework {
+namespace OpenTK::windowing::graphicsframework {
 enum class Keys : int32_t {
   Unknown = 0,
 
@@ -135,6 +133,3 @@ enum class Keys : int32_t {
   LastKey = Menu
 };
 }
-} // namespace windowing
-
-} // namespace OpenTK

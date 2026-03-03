@@ -1,11 +1,5 @@
 #pragma once
 
-namespace OpenTK {
-
-namespace windowing {
-namespace common {
+namespace OpenTK::windowing::common {
 enum WindowBorder { Resizeable = 0, Fixed, Hidden };
 }
-} // namespace windowing
-
-} // namespace OpenTK

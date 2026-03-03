@@ -1,9 +1,6 @@
 #pragma once
 
-namespace OpenTK {
-
-namespace windowing {
-namespace common {
+namespace OpenTK::windowing::common {
 class IGraphicsContext {
 public:
   virtual ~IGraphicsContext() = default;
@@ -17,7 +14,4 @@ public:
   virtual void MakeCurrent() = 0;
   virtual void MakeNoneCurrent() = 0;
 };
-} // namespace common
-} // namespace windowing
-
-} // namespace OpenTK
+} // namespace OpenTK::windowing::common

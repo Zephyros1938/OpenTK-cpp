@@ -1,9 +1,7 @@
 #pragma once
 #include <GLFW/glfw3.h>
 
-namespace OpenTK {
-namespace windowing {
-namespace graphicsframework {
+namespace OpenTK::windowing::graphicsframework {
 struct VideoMode {
 public:
   int Width, Height, RedBits, GreenBits, BlueBits, RefreshRate;
@@ -15,7 +13,4 @@ public:
         GreenBits(mode->greenBits), BlueBits(mode->blueBits),
         RefreshRate(mode->refreshRate) {}
 };
-} // namespace graphicsframework
-} // namespace windowing
-
-} // namespace OpenTK
+} // namespace OpenTK::windowing::graphicsframework

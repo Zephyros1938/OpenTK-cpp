@@ -1,10 +1,6 @@
 #pragma once
 
-#include <cstdint>
-
-namespace OpenTK {
-namespace windowing {
-namespace graphicsframework {
+namespace OpenTK::windowing::graphicsframework {
 enum class JoystickHats : char {
   Centered = 0,
   Up = 1,
@@ -17,6 +13,3 @@ enum class JoystickHats : char {
   LeftDown = Left | Down
 };
 }
-} // namespace windowing
-
-} // namespace OpenTK

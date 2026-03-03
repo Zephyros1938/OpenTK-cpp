@@ -4,10 +4,7 @@
 #include <OpenTK/windowing/graphicsframework/enum/keymodifiers.hpp>
 #include <OpenTK/windowing/graphicsframework/enum/mousebutton.hpp>
 
-namespace OpenTK {
-
-namespace windowing {
-namespace common {
+namespace OpenTK::windowing::common {
 struct MouseButtonEventArgs {
   graphicsframework::MouseButton _Button;
   graphicsframework::InputAction _Action;
@@ -23,7 +20,4 @@ struct MouseButtonEventArgs {
                        graphicsframework::KeyModifiers modifiers)
       : _Button(button), _Action(action), _Modifiers(modifiers) {}
 };
-} // namespace common
-} // namespace windowing
-
-} // namespace OpenTK
+} // namespace OpenTK::windowing::common

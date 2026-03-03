@@ -1,14 +1,8 @@
 #pragma once
 
-namespace OpenTK {
-
-namespace windowing {
-namespace common {
+namespace OpenTK::windowing::common {
 struct FrameEventArgs {
   double Time;
   FrameEventArgs(double elapsed) : Time(elapsed) {};
 };
-} // namespace common
-} // namespace windowing
-
-} // namespace OpenTK
+} // namespace OpenTK::windowing::common

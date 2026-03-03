@@ -2,9 +2,7 @@
 
 #include <cstdint>
 
-namespace OpenTK {
-namespace windowing {
-namespace graphicsframework {
+namespace OpenTK::windowing::graphicsframework {
 enum class InitHintBool : uint32_t {
   JoystickHatButtons = 0x00050001,
   CocoaChdirResources = 0x00051001,
@@ -12,6 +10,3 @@ enum class InitHintBool : uint32_t {
   X11XcbVulkanSurface = 0x00052001
 };
 }
-} // namespace windowing
-
-} // namespace OpenTK

@@ -2,9 +2,7 @@
 
 #include <cstdint>
 
-namespace OpenTK {
-namespace windowing {
-namespace graphicsframework {
+namespace OpenTK::windowing::graphicsframework {
 enum class WindowHintInt : uint32_t {
   PositionX = 0x0002000E,
   PositionY = 0x0002000F,
@@ -26,6 +24,3 @@ enum class WindowHintInt : uint32_t {
   RefreshRate = 0x0002100F
 };
 }
-} // namespace windowing
-
-} // namespace OpenTK

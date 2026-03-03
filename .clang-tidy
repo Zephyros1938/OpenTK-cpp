@@ -1,0 +1,6 @@
+---
+Checks: 'modernize-concat-nested-namespaces'
+CheckOptions:
+  - key:             modernize-concat-nested-namespaces.HeaderFileExtensions
+    value:           'h,hh,hpp,hxx'
+...

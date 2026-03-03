@@ -2,10 +2,7 @@
 
 #include "windowhintbool.hpp"
 
-namespace OpenTK {
-
-namespace windowing {
-namespace graphicsframework {
+namespace OpenTK::windowing::graphicsframework {
 enum class WindowAttribute : uint32_t {
   Resizable = static_cast<uint32_t>(WindowHintBool::Resizable),
   Decorated = static_cast<uint32_t>(WindowHintBool::Decorated),
@@ -15,6 +12,3 @@ enum class WindowAttribute : uint32_t {
   MousePassthrough = static_cast<uint32_t>(WindowHintBool::MousePassthrough)
 };
 }
-} // namespace windowing
-
-} // namespace OpenTK

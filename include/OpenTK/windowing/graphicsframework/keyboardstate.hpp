@@ -4,10 +4,7 @@
 #include <bitset>
 #include <cstring>
 
-namespace OpenTK {
-
-namespace windowing {
-namespace graphicsframework {
+namespace OpenTK::windowing::graphicsframework {
 class KeyboardState {
   std::bitset<(int)Keys::LastKey + 1> _keys;
   std::bitset<(int)Keys::LastKey + 1> _keysPrevious;
@@ -44,7 +41,4 @@ public:
   }
   KeyboardState GetSnapshot() { return *new KeyboardState(*this); }
 };
-} // namespace graphicsframework
-} // namespace windowing
-
-} // namespace OpenTK
+} // namespace OpenTK::windowing::graphicsframework

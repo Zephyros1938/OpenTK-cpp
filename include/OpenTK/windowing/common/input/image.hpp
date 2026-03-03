@@ -2,10 +2,7 @@
 
 #include <stdexcept>
 
-namespace OpenTK {
-namespace windowing {
-namespace common {
-namespace input {
+namespace OpenTK::windowing::common::input {
 class Image {
 public:
   int Width, Height;
@@ -15,7 +12,7 @@ public:
       throw std::runtime_error("WINDOWING::COMMON::INPUT::IMAGE::NO_DATA");
     }
 
-    if (sizeof(data) < width * height * 4) {
+    if (sizeof(data) < (unsigned int)(width * height * 4)) {
       throw std::runtime_error(
           "WINDOWING::COMMON::INPUT::IMAGE::SIZE_MISMATCH");
     }
@@ -24,8 +21,4 @@ public:
     Data = data;
   }
 };
-} // namespace input
-} // namespace common
-} // namespace windowing
-
-} // namespace OpenTK
+} // namespace OpenTK::windowing::common::input

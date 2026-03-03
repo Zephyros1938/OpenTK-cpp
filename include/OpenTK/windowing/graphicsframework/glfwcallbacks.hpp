@@ -10,9 +10,7 @@
 #include "window.hpp"
 #include <cstdint>
 
-namespace OpenTK {
-namespace windowing {
-namespace graphicsframework {
+namespace OpenTK::windowing::graphicsframework {
 namespace GLFWCallbacks {
 typedef void (*CharCallback)(Window *, uint32_t);
 typedef void (*CharModsCallback)(Window *, uint32_t, KeyModifiers);
@@ -46,7 +44,4 @@ public:
   GLFWdeallocatefun Deallocate;
   void *user;
 };
-} // namespace graphicsframework
-} // namespace windowing
-
-} // namespace OpenTK
+} // namespace OpenTK::windowing::graphicsframework

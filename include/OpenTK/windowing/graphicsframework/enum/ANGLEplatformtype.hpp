@@ -2,9 +2,7 @@
 
 #include <cstdint>
 
-namespace OpenTK {
-namespace windowing {
-namespace graphicsframework {
+namespace OpenTK::windowing::graphicsframework {
 enum class ANGLEPlatformType : uint32_t {
   None = 0x00037001,
   OpenGL = 0x00037002,
@@ -15,6 +13,3 @@ enum class ANGLEPlatformType : uint32_t {
   Metal = 0x00037008,
 };
 }
-} // namespace windowing
-
-} // namespace OpenTK

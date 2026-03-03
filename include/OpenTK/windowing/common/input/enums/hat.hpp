@@ -1,10 +1,6 @@
 #pragma once
 
-namespace OpenTK {
-
-namespace windowing {
-namespace common {
-namespace input {
+namespace OpenTK::windowing::common::input {
 enum Hat : unsigned char {
   Centered = 0,
   Up = 1,
@@ -17,7 +13,3 @@ enum Hat : unsigned char {
   LeftDown = Left | Down
 };
 }
-} // namespace common
-} // namespace windowing
-
-} // namespace OpenTK

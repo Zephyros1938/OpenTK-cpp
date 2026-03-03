@@ -1,13 +1,5 @@
 #pragma once
 
-namespace OpenTK {
-
-namespace windowing {
-
-namespace common {
+namespace OpenTK::windowing::common {
 enum CursorState { Confined = 0, Grabbed, Hidden, Normal };
 }
-
-} // namespace windowing
-
-} // namespace OpenTK

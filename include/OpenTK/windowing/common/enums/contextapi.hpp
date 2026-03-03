@@ -1,10 +1,5 @@
 #pragma once
 
-namespace OpenTK {
-namespace windowing {
-namespace common {
+namespace OpenTK::windowing::common {
 enum ContextAPI { NoAPI, OpenGLES, OpenGL };
 }
-} // namespace windowing
-
-} // namespace OpenTK

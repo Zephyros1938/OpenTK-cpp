@@ -2,15 +2,10 @@
 
 #include <GLFW/glfw3.h>
 
-namespace OpenTK {
-namespace windowing {
-namespace graphicsframework {
+namespace OpenTK::windowing::graphicsframework {
 struct Monitor {
   GLFWmonitor *handle;
   Monitor(GLFWmonitor *h) : handle(h) {};
   operator GLFWmonitor *() { return handle; }
 };
-} // namespace graphicsframework
-} // namespace windowing
-
-} // namespace OpenTK
+} // namespace OpenTK::windowing::graphicsframework

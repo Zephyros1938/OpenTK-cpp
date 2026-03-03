@@ -2,14 +2,9 @@
 
 #include <string>
 
-namespace OpenTK {
-namespace windowing {
-namespace common {
+namespace OpenTK::windowing::common {
 struct FileDropEventsArgs {
   FileDropEventsArgs(std::string paths[]) : Filenames(paths) {}
   std::string *Filenames;
 };
-} // namespace common
-} // namespace windowing
-
-} // namespace OpenTK
+} // namespace OpenTK::windowing::common

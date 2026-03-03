@@ -3,9 +3,7 @@
 #include "windowhintbool.hpp"
 #include <cstdint>
 
-namespace OpenTK {
-namespace windowing {
-namespace graphicsframework {
+namespace OpenTK::windowing::graphicsframework {
 enum class WindowAttributeGetBool : uint32_t {
   Focused = static_cast<uint32_t>(WindowHintBool::Focused),
   Iconified = static_cast<uint32_t>(WindowHintBool::Iconified),
@@ -28,6 +26,3 @@ enum class WindowAttributeGetBool : uint32_t {
   DoubleBuffer = static_cast<uint32_t>(WindowHintBool::DoubleBuffer)
 };
 }
-} // namespace windowing
-
-} // namespace OpenTK
