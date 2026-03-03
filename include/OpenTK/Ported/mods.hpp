@@ -2,8 +2,7 @@
 
 #include <type_traits>
 
-namespace core {
-namespace enumutil {
+namespace OpenTK::Ported::EnumUtil {
 template <typename E> constexpr bool HasFlag(E value, E flag) {
   static_assert(std::is_enum<E>::value, "HasFlag only works with enum types.");
 
@@ -11,5 +10,4 @@ template <typename E> constexpr bool HasFlag(E value, E flag) {
   using T = typename std::underlying_type<E>::type;
   return (static_cast<T>(value) & static_cast<T>(flag)) == static_cast<T>(flag);
 }
-} // namespace enumutil
-} // namespace core
+} // namespace OpenTK::Ported::EnumUtil

@@ -1,6 +1,5 @@
 #pragma once
 
-#include "../../../core/intptr.hpp"
 #include "cursor.hpp"
 #include "enum/ANGLEplatformtype.hpp"
 #include "enum/clientapi.hpp"
@@ -47,12 +46,15 @@
 #include "videomode.hpp"
 #include "window.hpp"
 #include <GLFW/glfw3.h>
+#include <OpenTK/Ported/intptr.hpp>
 #include <cstddef>
 #include <cstdint>
 #include <cstring>
 #include <span>
 #include <string>
 template <typename T> using ReadOnlySpan = std::span<const T>;
+
+using IntPtr = OpenTK::Ported::IntPtr;
 
 namespace OpenTK {
 
@@ -354,11 +356,11 @@ public:
     auto ptr = extensionName.c_str();
     return glfwExtensionSupported(ptr) == GLFW_TRUE;
   }
-  static core::IntPtr GetProcAddress(std::string proc) {
-    return (core::IntPtr)glfwGetProcAddress(proc.c_str());
+  static IntPtr GetProcAddress(std::string proc) {
+    return (IntPtr)glfwGetProcAddress(proc.c_str());
   }
-  static core::IntPtr GetProcAddressRaw(const char *proc) {
-    return (core::IntPtr)glfwGetProcAddress(proc);
+  static IntPtr GetProcAddressRaw(const char *proc) {
+    return (IntPtr)glfwGetProcAddress(proc);
   }
   static bool ExtensionsSupportedRaw(const char *extensionName) {
     return glfwExtensionSupported(extensionName) == GLFW_TRUE;
@@ -458,28 +460,28 @@ public:
   static void IconifyWindow(Window *w) { glfwIconifyWindow(*w); }
   static void MakeContextCurrent(Window *w) { glfwMakeContextCurrent(*w); }
   static void MaximizeWindow(Window *w) { glfwMaximizeWindow(*w); }
-  static core::IntPtr
+  static IntPtr
   SetWindowMaximizeCallback(Window *w,
                             GLFWCallbacks::WindowMaximizeCallback cb) {
-    return (core::IntPtr)glfwSetWindowMaximizeCallback(
+    return (IntPtr)glfwSetWindowMaximizeCallback(
         *w, (GLFWwindowmaximizefun)cb);
   }
-  static core::IntPtr
+  static IntPtr
   SetFrameBufferSizeCallback(Window *w,
                              GLFWCallbacks::FramebufferSizeCallback cb) {
-    return (core::IntPtr)glfwSetFramebufferSizeCallback(
+    return (IntPtr)glfwSetFramebufferSizeCallback(
         *w, (GLFWframebuffersizefun)cb);
   }
   static void PollEvents() { glfwPollEvents(); }
   static void PostEmptyEvent() { glfwPostEmptyEvent(); }
   static void RestoreWindow(Window *w) { glfwRestoreWindow(*w); }
-  static core::IntPtr SetCharCallback(Window *w,
+  static IntPtr SetCharCallback(Window *w,
                                       GLFWCallbacks::CharCallback cb) {
-    return (core::IntPtr)glfwSetCharCallback(*w, (GLFWcharfun)cb);
+    return (IntPtr)glfwSetCharCallback(*w, (GLFWcharfun)cb);
   }
-  static core::IntPtr SetCharModsCallback(Window *w,
+  static IntPtr SetCharModsCallback(Window *w,
                                           GLFWCallbacks::CharModsCallback cb) {
-    return (core::IntPtr)glfwSetCharModsCallback(*w, (GLFWcharmodsfun)cb);
+    return (IntPtr)glfwSetCharModsCallback(*w, (GLFWcharmodsfun)cb);
   }
   static void SetClipboardString(Window *w, std::string data) {
     auto ptr = data.c_str();
@@ -488,20 +490,20 @@ public:
   static void SetClipboardStringRaw(Window *w, const char *data) {
     glfwSetClipboardString(*w, data);
   }
-  static core::IntPtr
+  static IntPtr
   SetCursorEnterCallback(Window *w, GLFWCallbacks::CursorEnterCallback cb) {
-    return (core::IntPtr)glfwSetCursorEnterCallback(*w, (GLFWcursorenterfun)cb);
+    return (IntPtr)glfwSetCursorEnterCallback(*w, (GLFWcursorenterfun)cb);
   }
-  static core::IntPtr
+  static IntPtr
   SetCursorPosCallback(Window *w, GLFWCallbacks::CursorPosCallback cb) {
-    return (core::IntPtr)glfwSetCursorPosCallback(*w, (GLFWcursorposfun)cb);
+    return (IntPtr)glfwSetCursorPosCallback(*w, (GLFWcursorposfun)cb);
   }
-  static core::IntPtr SetDropCallback(Window *w,
+  static IntPtr SetDropCallback(Window *w,
                                       GLFWCallbacks::DropCallback cb) {
-    return (core::IntPtr)glfwSetDropCallback(*w, (GLFWdropfun)cb);
+    return (IntPtr)glfwSetDropCallback(*w, (GLFWdropfun)cb);
   }
-  static core::IntPtr SetErrorCallback(GLFWCallbacks::ErrorCallback cb) {
-    return (core::IntPtr)glfwSetErrorCallback((GLFWerrorfun)cb);
+  static IntPtr SetErrorCallback(GLFWCallbacks::ErrorCallback cb) {
+    return (IntPtr)glfwSetErrorCallback((GLFWerrorfun)cb);
   }
   static void SetInputMode(Window *w, CursorStateAttribute mode,
                            CursorModeValue value) {
@@ -517,30 +519,30 @@ public:
                            bool value) {
     glfwSetInputMode(*w, (int)mode, value ? GLFW_TRUE : GLFW_FALSE);
   }
-  static core::IntPtr SetJoystickCallback(GLFWCallbacks::JoystickCallback cb) {
-    return (core::IntPtr)glfwSetJoystickCallback((GLFWjoystickfun)cb);
+  static IntPtr SetJoystickCallback(GLFWCallbacks::JoystickCallback cb) {
+    return (IntPtr)glfwSetJoystickCallback((GLFWjoystickfun)cb);
   }
-  static core::IntPtr SetKeyCallback(Window *w, GLFWCallbacks::KeyCallback cb) {
-    return (core::IntPtr)glfwSetKeyCallback(*w, (GLFWkeyfun)cb);
+  static IntPtr SetKeyCallback(Window *w, GLFWCallbacks::KeyCallback cb) {
+    return (IntPtr)glfwSetKeyCallback(*w, (GLFWkeyfun)cb);
   }
-  static core::IntPtr SetScrollCallback(Window *w,
+  static IntPtr SetScrollCallback(Window *w,
                                         GLFWCallbacks::ScrollCallback cb) {
-    return (core::IntPtr)glfwSetScrollCallback(*w, (GLFWscrollfun)cb);
+    return (IntPtr)glfwSetScrollCallback(*w, (GLFWscrollfun)cb);
   }
-  static core::IntPtr SetMonitorCallback(GLFWCallbacks::MonitorCallback cb) {
-    return (core::IntPtr)glfwSetMonitorCallback((GLFWmonitorfun)cb);
+  static IntPtr SetMonitorCallback(GLFWCallbacks::MonitorCallback cb) {
+    return (IntPtr)glfwSetMonitorCallback((GLFWmonitorfun)cb);
   }
-  static core::IntPtr
+  static IntPtr
   SetMouseButtonCallback(Window *w, GLFWCallbacks::MouseButtonCallback cb) {
-    return (core::IntPtr)glfwSetMouseButtonCallback(*w, (GLFWmousebuttonfun)cb);
+    return (IntPtr)glfwSetMouseButtonCallback(*w, (GLFWmousebuttonfun)cb);
   }
-  static core::IntPtr
+  static IntPtr
   SetWindowCloseCallback(Window *w, GLFWCallbacks::WindowCloseCallback cb) {
-    return (core::IntPtr)glfwSetWindowCloseCallback(*w, (GLFWwindowclosefun)cb);
+    return (IntPtr)glfwSetWindowCloseCallback(*w, (GLFWwindowclosefun)cb);
   }
-  static core::IntPtr
+  static IntPtr
   SetWindowFocusCallback(Window *w, GLFWCallbacks::WindowFocusCallback cb) {
-    return (core::IntPtr)glfwSetWindowFocusCallback(*w, (GLFWwindowfocusfun)cb);
+    return (IntPtr)glfwSetWindowFocusCallback(*w, (GLFWwindowfocusfun)cb);
   }
   static void SetWindowIcon(Window *w, ReadOnlySpan<Image> images) {
     const Image *ptr = images.data();
@@ -551,9 +553,9 @@ public:
   static void SetWindowIconRaw(Window *w, int count, Image *images) {
     glfwSetWindowIcon(*w, count, *images);
   }
-  static core::IntPtr
+  static IntPtr
   SetWindowIconifyCallback(Window *w, GLFWCallbacks::WindowIconifyCallback cb) {
-    return (core::IntPtr)glfwSetWindowIconifyCallback(*w,
+    return (IntPtr)glfwSetWindowIconifyCallback(*w,
                                                       (GLFWwindowiconifyfun)cb);
   }
   static void SetWindowMonitor(Window *w, Monitor *m, int x, int y, int width,
@@ -563,21 +565,21 @@ public:
   static void SetWindowPos(Window *w, int x, int y) {
     glfwSetWindowPos(*w, x, y);
   }
-  static core::IntPtr
+  static IntPtr
   SetWindowPosCallback(Window *w, GLFWCallbacks::WindowPosCallback cb) {
-    return (core::IntPtr)glfwSetWindowPosCallback(*w, (GLFWwindowposfun)cb);
+    return (IntPtr)glfwSetWindowPosCallback(*w, (GLFWwindowposfun)cb);
   }
-  static core::IntPtr
+  static IntPtr
   SetWindowRefreshCallback(Window *w, GLFWCallbacks::WindowRefreshCallback cb) {
-    return (core::IntPtr)glfwSetWindowRefreshCallback(*w,
+    return (IntPtr)glfwSetWindowRefreshCallback(*w,
                                                       (GLFWwindowrefreshfun)cb);
   }
   static void SetWindowSize(Window *w, int width, int height) {
     glfwSetWindowSize(*w, width, height);
   }
-  static core::IntPtr
+  static IntPtr
   SetWindowSiezCallback(Window *w, GLFWCallbacks::WindowSizeCallback cb) {
-    return (core::IntPtr)glfwSetWindowSizeCallback(*w, (GLFWwindowsizefun)cb);
+    return (IntPtr)glfwSetWindowSizeCallback(*w, (GLFWwindowsizefun)cb);
   }
   static void SetWindowShouldClose(Window *w, bool value) {
     glfwSetWindowShouldClose(*w, value ? GLFW_TRUE : GLFW_FALSE);

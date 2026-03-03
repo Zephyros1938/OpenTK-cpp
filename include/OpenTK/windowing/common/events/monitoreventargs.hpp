@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../monitorhandle.hpp"
+#include <OpenTK/windowing/common/monitorhandle.hpp>
 
 namespace OpenTK {
 

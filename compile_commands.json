@@ -1,0 +1,18 @@
+[
+  {
+    "file": "src/main.cpp",
+    "arguments": [
+      "g++",
+      "-std=c++23",
+      "-Wall",
+      "-Wextra",
+      "-Iinclude",
+      "-c",
+      "src/main.cpp",
+      "-o",
+      "obj/main.o"
+    ],
+    "directory": "/home/zeph/Coding/CPP/OpenTK-cpp",
+    "output": "obj/main.o"
+  }
+]

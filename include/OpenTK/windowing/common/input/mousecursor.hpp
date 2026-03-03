@@ -1,6 +1,6 @@
 #pragma once
 
-#include "image.hpp"
+#include <OpenTK/windowing/common/input/image.hpp>
 #include <stdexcept>
 
 namespace OpenTK {

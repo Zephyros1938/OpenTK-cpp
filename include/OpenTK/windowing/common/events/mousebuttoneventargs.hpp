@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../../graphicsframework/enum/inputaction.hpp"
-#include "../../graphicsframework/enum/keymodifiers.hpp"
-#include "../../graphicsframework/enum/mousebutton.hpp"
+#include <OpenTK/windowing/graphicsframework/enum/inputaction.hpp>
+#include <OpenTK/windowing/graphicsframework/enum/keymodifiers.hpp>
+#include <OpenTK/windowing/graphicsframework/enum/mousebutton.hpp>
 
 namespace OpenTK {
 

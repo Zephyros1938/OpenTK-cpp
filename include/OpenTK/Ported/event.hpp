@@ -2,7 +2,7 @@
 
 #include <functional>
 #include <vector>
-namespace core {
+namespace OpenTK::Ported {
 
 template <typename... Args> class Event {
   std::vector<std::function<void(Args...)>> listeners;
@@ -19,4 +19,4 @@ public:
   }
 };
 
-} // namespace core
+} // namespace OpenTK::Ported

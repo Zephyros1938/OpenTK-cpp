@@ -1,10 +1,8 @@
 #pragma once
 
-#include "../../../core/mods.hpp"
+#include <core/mods.hpp>
 #include "../../graphicsframework/enum/keymodifiers.hpp"
 #include "../../graphicsframework/enum/keys.hpp"
-
-namespace OpenTK {
 
 namespace windowing {
 namespace common {
@@ -32,5 +30,3 @@ struct KeyboardKeyEventArgs {
 };
 } // namespace common
 } // namespace windowing
-
-} // namespace OpenTK
