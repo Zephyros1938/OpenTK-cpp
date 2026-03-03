@@ -11,3 +11,5 @@ This project will likely not be kept up-to-date with the OpenTK repository, as t
 Expect very non C++ syntax, I am porting directly from what OpenTK's source code is, and am not accounting for the language difference.
 
 I do not claim any credit for OpenTK's work, this is simply a port of their project and I do not claim ownership over their code.
+
+## [LICENSE](LICENSE)
