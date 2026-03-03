@@ -12,4 +12,9 @@ Expect very non C++ syntax, I am porting directly from what OpenTK's source code
 
 I do not claim any credit for OpenTK's work, this is simply a port of their project and I do not claim ownership over their code.
 
-## [LICENSE](LICENSE)
+## License & Attribution
+
+This project is a C++ port of the [OpenTK](https://github.com/opentk/opentk) library. 
+The original C# implementation is licensed under the MIT License, Copyright (c) 2006-2019 Stefanos Apostolopoulos.
+
+This port is also licensed under the **MIT License**. See the [LICENSE](LICENSE) file for full details.
