@@ -1,6 +1,16 @@
-mkdir build
-cd build
-# The -DCMAKE_EXPORT_COMPILE_COMMANDS=ON is the key for clangd
-cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
-# Link the generated file to the root so clangd finds it
-ln -s compile_commands.json ..
+#!/bin/bash
+
+# Create build directory if it doesn't exist
+mkdir -p build
+
+# Configure and Build
+cmake -S . -B build
+cmake --build build
+
+# Run the app if build was successful
+if [ $? -eq 0 ]; then
+    echo "--- Running test_app ---"
+    ./build/test_app
+else
+    echo "Build failed."
+fi

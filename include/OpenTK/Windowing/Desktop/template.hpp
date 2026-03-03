@@ -1,3 +1,3 @@
 #pragma once
 
-namespace OpenTK::windowing::desktop {}
+namespace OpenTK::Windowing::Desktop {}

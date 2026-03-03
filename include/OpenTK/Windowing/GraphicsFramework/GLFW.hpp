@@ -365,10 +365,24 @@ public:
   static bool ExtensionsSupportedRaw(const char *extensionName) {
     return glfwExtensionSupported(extensionName) == GLFW_TRUE;
   }
-  static Window *CreateWindow(int width, int height, std::string title,
-                              Monitor *monitor, Window *share) {
+  static Window *
+  CreateWindow(int width, int height, std::string title, Monitor *monitor,
+               Window *share) { // INFO: this function is different than
+                                // OpenTK's since C# is nice about exceptions
+                                // and c++ is "haha nullptr dereference"
     auto ptr = title.c_str();
-    return new Window(glfwCreateWindow(width, height, ptr, *monitor, *share));
+
+    GLFWmonitor *mHandle =
+        (monitor != nullptr) ? (GLFWmonitor *)*monitor : nullptr;
+    GLFWwindow *sHandle = (share != nullptr) ? (GLFWwindow *)*share : nullptr;
+
+    GLFWwindow *nativeWin =
+        glfwCreateWindow(width, height, ptr, mHandle, sHandle);
+
+    if (!nativeWin)
+      return nullptr;
+
+    return new Window(nativeWin);
   }
   static Window *CreateWindowRaw(int width, int height, const char *title,
                                  Monitor *monitor, Window *share) {
