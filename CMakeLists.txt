@@ -8,7 +8,7 @@ target_include_directories(OpenTK INTERFACE
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
 )
-target_compile_features(OpenTK INTERFACE cxx_std_26)
+target_compile_options(OpenTK INTERFACE -std=c++2c)
 
 if(NOT TEST_NAME)
   set(TEST_NAME "app")
