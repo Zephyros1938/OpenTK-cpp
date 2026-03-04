@@ -17,6 +17,7 @@
 #include "OpenTK/Windowing/GraphicsFramework/Enums/WindowAttribute.hpp"
 #include "OpenTK/Windowing/GraphicsFramework/GLFW.hpp"
 #include "OpenTK/Windowing/GraphicsFramework/GLFWCallbacks.hpp"
+#include "OpenTK/Windowing/GraphicsFramework/Image.hpp"
 #include "OpenTK/Windowing/GraphicsFramework/Input/JoystickState.hpp"
 #include "OpenTK/Windowing/GraphicsFramework/Input/KeyboardState.hpp"
 #include "OpenTK/Windowing/GraphicsFramework/Input/MouseState.hpp"
@@ -25,7 +26,9 @@
 #include <array>
 #include <exception>
 #include <memory>
+#include <span>
 #include <stdexcept>
+#include <vector>
 
 namespace OpenTK::Windowing::Desktop {
 using GLFW = Windowing::GraphicsFramework::GLFW;
@@ -44,7 +47,7 @@ class NativeWindow {
   using _IGLFWGraphicsContext_ = IGLFWGraphicsContext;
   using _GLFWGraphicsContext_ = GLFWGraphicsContext;
   using _WindowIcon_ = Common::Input::WindowIcon;
-  using _Image_ = Common::Input::Image;
+  using _Image_ = GraphicsFramework::Image;
 
   float _cachedWindowClientSize[2], _cachedWindowLocation[2],
       _lastReportedMousePos[2];
@@ -56,6 +59,7 @@ class NativeWindow {
   _VSyncMode_ _vSync;
   bool _autoIconify;
   _WindowIcon_ _icon;
+  std::string _title;
 
 public:
   _Window_ *WindowPtr;
@@ -116,21 +120,19 @@ public:
       [this](_WindowIcon_ value) { // INFO : no weird GChandle stuff is needed
                                    // here since C++'s garbage collector works
                                    // differently than C#'s
-        const auto &images = value.Images;
-        int count = images.size();
-        if (count > 0) {
-          GLFWimage *glfwImages =
-              (GLFWimage *)alloca(count * sizeof(GLFWimage));
-          for (int i = 0; i < count; i++) {
-            const _Image_ &src = images[i];
-
-            glfwImages[i].width = src.Width;
-            glfwImages[i].height = src.Height;
-            glfwImages[i].pixels = (unsigned char *)src.Data;
-          }
-          ReadOnlySpan<_Image_> imageSpan{glfwImages};
-          GLFW::SetWindowIcon(this->WindowPtr, glfwImages);
+        std::vector<_Image_> images = value.Images;
+        if (images.size() > 0) {
+          GLFW::SetWindowIcon(this->WindowPtr, images);
         }
       }};
+  bool IsEventDriven;
+  Property<std::string> ClipboardString{
+      [this]() { return GLFW::GetClipboardString(WindowPtr); },
+      [this](std::string value) {
+        GLFW::SetClipboardString(WindowPtr, value);
+      }};
+  Property<std::string> Title{[this]() { return _title; },
+                              [this](std::string value) { _title = value; }};
+  // FIXME: Add APIVersion here
 };
 } // namespace OpenTK::Windowing::Desktop

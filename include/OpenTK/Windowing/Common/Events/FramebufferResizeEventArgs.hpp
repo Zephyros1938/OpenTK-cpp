@@ -8,4 +8,4 @@ struct FramebufferResizeEventArgs {
   FramebufferResizeEventArgs(const int size[2]) : Size{*size} {}
   FramebufferResizeEventArgs(int width, int height) : Size{width, height} {}
 };
-} // namespace OpenTK::windowing::common
+} // namespace OpenTK::Windowing::Common

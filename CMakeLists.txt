@@ -10,7 +10,7 @@ target_include_directories(OpenTK INTERFACE
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
     $<INSTALL_INTERFACE:include>
 )
-target_compile_features(OpenTK INTERFACE cxx_std_23)
+target_compile_features(OpenTK INTERFACE cxx_std_26)
 
 # 3. Build the test app
 if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp")

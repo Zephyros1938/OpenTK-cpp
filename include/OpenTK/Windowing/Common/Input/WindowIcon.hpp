@@ -1,6 +1,6 @@
 #pragma once
 
-#include <OpenTK/Windowing/Common/Input/Image.hpp>
+#include <OpenTK/Windowing/GraphicsFramework/Image.hpp>
 #include <iterator>
 #include <vector>
 
@@ -9,8 +9,8 @@ class WindowIcon {
   WindowIcon() {}
 
 public:
-  std::vector<Image> Images;
-  template <size_t N> WindowIcon(Image images[N]) {
+  std::vector<GraphicsFramework::Image> Images;
+  template <size_t N> WindowIcon(GraphicsFramework::Image images[N]) {
     for (size_t i = 0; i < N; ++i) {
       Images.push_back(images[i]);
     }

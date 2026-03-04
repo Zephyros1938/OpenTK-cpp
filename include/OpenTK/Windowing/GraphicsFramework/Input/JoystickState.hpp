@@ -6,6 +6,7 @@
 #include <GLFW/glfw3.h>
 #include <cstring>
 #include <string>
+#include <utility>
 #include <vector>
 
 namespace OpenTK::Windowing::GraphicsFramework {
@@ -64,10 +65,11 @@ class JoystickState {
     UpdateButtons();
   }
   void UpdateButtons() {
-    auto __buttons = _buttons;
-    auto __buttonsPrevious = _buttonsPrevious;
-    _buttons = __buttonsPrevious;
-    _buttonsPrevious = __buttons;
+    // auto __buttons = _buttons;
+    // auto __buttonsPrevious = _buttonsPrevious;
+    //_buttons = __buttonsPrevious;
+    //_buttonsPrevious = __buttons;
+    std::swap(_buttons, _buttonsPrevious);
 
     ReadOnlySpan<JoystickInputAction> buttons = GLFW::GetJoystickButtons(Id);
     for (int i = 0; i < buttons.size(); i++) {
@@ -75,18 +77,20 @@ class JoystickState {
     }
   }
   void UpdateAxes() {
-    auto __axes = _axes;
-    auto __axesPrevious = _axesPrevious;
-    _axes = __axesPrevious;
-    _axesPrevious = __axes;
+    // auto __axes = _axes;
+    // auto __axesPrevious = _axesPrevious;
+    //_axes = __axesPrevious;
+    //_axesPrevious = __axes;
+    std::swap(_axes, _axesPrevious);
     ReadOnlySpan<float> axes = GLFW::GetJoystickAxes(Id);
     SetAxes(axes);
   }
   void UpdateHats() {
-    auto __hats = _hats;
-    auto __hatsPrevious = _hatsPrevious;
-    _hats = __hats;
-    _hatsPrevious = __hatsPrevious;
+    // auto __hats = _hats;
+    // auto __hatsPrevious = _hatsPrevious;
+    //_hats = __hats;
+    //_hatsPrevious = __hatsPrevious;
+    std::swap(_hats, _hatsPrevious);
     ReadOnlySpan<JoystickHats> hats = GLFW::GetJoystickHats(Id);
     for (int j = 0; j < hats.size(); j++) {
       SetHat(j, (Common::Input::Hat)hats[j]);
@@ -115,4 +119,4 @@ public:
   float GetAxisPrevious(int index) { return _axesPrevious[index]; }
   JoystickState GetSnapshot() { return JoystickState(*this); }
 };
-} // namespace OpenTK::windowing::graphicsframework
+} // namespace OpenTK::Windowing::GraphicsFramework
