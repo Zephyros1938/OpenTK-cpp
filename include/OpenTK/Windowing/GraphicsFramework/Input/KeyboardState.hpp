@@ -41,4 +41,4 @@ public:
   }
   KeyboardState GetSnapshot() { return *new KeyboardState(*this); }
 };
-} // namespace OpenTK::windowing::graphicsframework
+} // namespace OpenTK::Windowing::GraphicsFramework

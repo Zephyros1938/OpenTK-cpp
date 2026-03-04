@@ -49,7 +49,8 @@ public:
     return false;
   }
   void NewFrame(Window *windowPtr) {
-    memset(&_buttonsPrevious, false, _buttonsPrevious.size());
+    // memset(&_buttonsPrevious, false, _buttonsPrevious.size());
+    _buttonsPrevious.reset();
     _buttonsPrevious |= _buttons;
 
     memcpy(&PreviousPosition, Position, 2);
@@ -59,4 +60,4 @@ public:
     glfwGetCursorPos(*windowPtr, &x, &y);
   }
 };
-} // namespace OpenTK::windowing::graphicsframework
+} // namespace OpenTK::Windowing::GraphicsFramework

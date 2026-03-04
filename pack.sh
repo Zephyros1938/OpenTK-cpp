@@ -1,6 +1,5 @@
-mkdir build
+mkdir -p build
+rm compile_commands.json -f
 cd build
-# The -DCMAKE_EXPORT_COMPILE_COMMANDS=ON is the key for clangd
-cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
-# Link the generated file to the root so clangd finds it
-ln -s compile_commands.json ..
+cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DVERBOSE=OFF .. # this is so clangd isnt a bitch, so it can see the definitions for header files
+ln -s compile_commands.json ..                            # this too

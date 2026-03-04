@@ -4,6 +4,7 @@
 #include <cmath>
 #include <cstddef>
 #include <format>
+#include <ostream>
 #include <type_traits>
 namespace OpenTK::Mathematics {
 template <size_t N, typename T = float> struct Vector {
@@ -90,6 +91,17 @@ template <size_t N, typename T = float> struct Vector {
       result[i] = static_cast<T>(a[i] + (b[i] - a[i]) * blend);
     }
     return result;
+  }
+
+  friend std::ostream &operator<<(std::ostream &os, const Vector<N, T> v) {
+    os << "(";
+    for (size_t n = 0; n < N; n++) {
+      os << v.data[n];
+      if (n != N - 1)
+        os << ", ";
+    }
+    os << ")";
+    return os;
   }
 
   static Vector component_min(const Vector &a, const Vector &b) {
