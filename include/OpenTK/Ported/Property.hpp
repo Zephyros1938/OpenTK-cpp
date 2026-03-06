@@ -23,4 +23,27 @@ public:
   // Overload the type conversion operator to trigger the getter
   operator T() const { return getter(); }
 };
+
+template <typename T> class ConstexprProperty {
+private:
+  T (*getter)();
+  void (*setter)(T);
+
+public:
+  constexpr ConstexprProperty(T (*g)(), void (*s)(T)) : getter(g), setter(s) {}
+  T operator=(const T &value) const {
+    setter(value);
+    return value;
+  }
+  operator T() const { return getter(); }
+};
+
+template <typename T, T (*Get)(), void (*Set)(T)> struct StaticProperty {
+  T operator=(const T &v) {
+    Set(v);
+    return v;
+  }
+  operator T() const { return Get(); }
+};
+
 } // namespace OpenTK::Ported

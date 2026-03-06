@@ -3,7 +3,6 @@
 #include <array>
 #include <cstddef>
 #include <initializer_list>
-#include <stdexcept>
 #include <vector>
 
 namespace OpenTK::Ported {

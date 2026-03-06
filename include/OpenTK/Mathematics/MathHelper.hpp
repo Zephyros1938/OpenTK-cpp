@@ -13,20 +13,20 @@ namespace OpenTK::Mathematics {
 
 class MathHelper {
 public:
-  const float Pi = 3.1415924;
-  const float PiOver2 = Pi / 2;
-  const float PiOver3 = Pi / 3;
-  const float PiOver4 = Pi / 4;
-  const float PiOver6 = Pi / 6;
-  const float TwoPi = Pi * 2;
-  const float ThreePiOver2 = 3 * Pi / 2;
-  const float E = 2.7182817;
-  const float Log10E = 0.4342945;
-  const float Log2E = 1.442695;
-  const float RadToDeg = 180 / Pi;
-  const float DegToRad = Pi / 180;
-  const double RadToDegd = 180 / 3.1415926535897931;
-  const double DegToRadd = 3.1415926535897931 / 180;
+  static constexpr float Pi = 3.1415924;
+  static constexpr float PiOver2 = Pi / 2;
+  static constexpr float PiOver3 = Pi / 3;
+  static constexpr float PiOver4 = Pi / 4;
+  static constexpr float PiOver6 = Pi / 6;
+  static constexpr float TwoPi = Pi * 2;
+  static constexpr float ThreePiOver2 = 3 * Pi / 2;
+  static constexpr float E = 2.7182817;
+  static constexpr float Log10E = 0.4342945;
+  static constexpr float Log2E = 1.442695;
+  static constexpr float RadToDeg = 180 / Pi;
+  static constexpr float DegToRad = Pi / 180;
+  static constexpr double RadToDegd = 180 / 3.1415926535897931;
+  static constexpr double DegToRadd = 3.1415926535897931 / 180;
   constexpr auto Abs(Scalar auto v) { return v < 0 ? -v : v; }
   constexpr auto Sin(Real auto v) { return std::sin(v); }
   constexpr auto Sinh(Real auto v) { return std::sinh(v); }
