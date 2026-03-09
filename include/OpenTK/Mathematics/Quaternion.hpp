@@ -58,7 +58,7 @@ template <typename T = float> struct Quaternion {
     auto sqz = q.Xyz[2] * q.Xyz[2];
     auto unit = sqx + sqy + sqz + sqw;
     auto singularityTest = (q.Xyz[0] * q.Xyz[2]) + (q.W * q.Xyz[1]);
-    // INFO: std::atan2 is safer for some reason idk
+    // INFO: std::atan2 is safer
     if (singularityTest > SINGULARITY_THRESHOLD * unit) {
       eulerAngles.data[2] = static_cast<T>(2) * std::atan2(q.Xyz[0], q.W);
       eulerAngles.data[1] = static_cast<T>(MathHelper::PiOver2);
@@ -77,6 +77,20 @@ template <typename T = float> struct Quaternion {
                      sqw - sqx - sqy + sqz);
     }
     return eulerAngles;
+  }
+  constexpr T Length() const {
+    return std::sqrt((W * W) + Xyz.LengthSquared());
+  }
+  constexpr T LengthSquared() const { return (W * W) + Xyz.LengthSquared(); }
+  constexpr Quaternion Normalized() const {
+    auto q = *this;
+    q.Normalize();
+    return q;
+  }
+  constexpr void Normalize() const {
+    auto scale = static_cast<T>(1.0f) / Length();
+    Xyz *= scale;
+    W *= scale;
   }
 };
 } // namespace OpenTK::Mathematics

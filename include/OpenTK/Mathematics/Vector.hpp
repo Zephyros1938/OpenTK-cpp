@@ -1,129 +1,230 @@
 #pragma once
 
+#include "OpenTK/Mathematics/Enums/MidpointRounding.hpp"
+#include "OpenTK/Mathematics/MathHelper.hpp"
 #include <array>
 #include <cmath>
 #include <concepts>
 #include <cstddef>
 #include <ostream>
 #include <type_traits>
-#include <vector>
 namespace OpenTK::Mathematics {
 template <size_t N, typename T = float> struct Vector {
   static_assert(std::is_arithmetic<T>::value, "Vector must be numeric");
   static_assert(N > 0, "Vector size must be a non-zero positive integer");
 
   std::array<T, N> data;
+  static Vector Zero() { return Vector(static_cast<T>(0)); }
+  static Vector One() { return Vector(static_cast<T>(1)); }
+  static int SizeInBytes() { return sizeof(Vector<N, T>); }
 
   Vector() { data.fill(static_cast<T>(0)); }
-  explicit Vector(T value) { data.fill(value); }
+  Vector(T value) { data.fill(value); }
 
-  // For specific values: Vector<2>(x,y)
   template <typename... Args, typename = std::enable_if_t<sizeof...(Args) == N>>
   Vector(Args... args) : data{static_cast<T>(args)...} {}
 
   T &operator[](size_t idx) { return data[idx]; }
   const T &operator[](size_t idx) const { return data[idx]; }
-  template <typename... Args>
-    requires(sizeof...(Args) > 0) &&
-            (std::is_convertible_v<Args, std::size_t> && ...)
-  Vector<sizeof...(Args), T> GetSubVector(Args... args) const {
-    return Vector<sizeof...(Args), T>{data[args]...};
-  }
-  template <typename... Args>
-    requires(sizeof...(Args) > 0 && sizeof...(Args) < N &&
-             (std::is_convertible_v<Args, std::size_t> && ...))
-  constexpr void SetSubVector(Vector<sizeof...(Args), T> subVec,
-                              Args... indixes) {
-    size_t i = 0;
-    ((data[indixes] = subVec[i++]), ...);
-  }
-  template <size_t S, typename R>
-    requires(S > 0 && S < N && std::ranges::random_access_range<R> &&
-             std::convertible_to<std::ranges::range_value_t<R>, size_t>)
-  constexpr void SetSubVectorI(Vector<S, T> subVec, R indices) {
-    for (size_t i = 0; i < S; ++i) {
-      data[indices[i]] = subVec[i];
-    }
-  }
 
-  constexpr T &X() const {
+  T &X() {
     static_assert(N >= 1, "Vector has no X component");
     return data[0];
   }
-  constexpr T &Y() const {
-    static_assert(N >= 1, "Vector has no Y component");
+  T &Y() {
+    static_assert(N >= 2, "Vector has no Y component");
     return data[1];
   }
-  constexpr T &Z() const {
-    static_assert(N >= 1, "Vector has no Z component");
+  T &Z() {
+    static_assert(N >= 3, "Vector has no Z component");
     return data[2];
   }
-  constexpr T &W() const {
-    static_assert(N >= 1, "Vector has no W component");
+  T &W() {
+    static_assert(N >= 4, "Vector has no W component");
     return data[3];
   }
 
-  constexpr Vector operator+(const Vector &other) const {
-    Vector result;
-    for (size_t i = 0; i < N; ++i)
-      result[i] = data[i] + other[i];
-    return result;
+  constexpr T Length() const {
+    T sum = static_cast<T>(0);
+    for (size_t i = 0; i < N; i++)
+      sum += data[i] * data[i];
+    return std::sqrt(sum);
   }
-  constexpr Vector operator-(const Vector &other) const {
-    Vector result;
-    for (size_t i = 0; i < N; ++i)
-      result[i] = data[i] - other[i];
-    return result;
+  constexpr T ReciprocalLengthFast() const {
+    T sum = static_cast<T>(0);
+    for (size_t i = 0; i < N; i++)
+      sum += data[i] * data[i];
+    return MathHelper::InverseSqrtFast<T>(sum);
   }
-  constexpr Vector operator*(T scalar) const {
-    Vector result;
-    for (size_t i = 0; i < N; ++i)
-      result[i] = data[i] * scalar;
-    return result;
+  constexpr T LengthFast() const {
+    return static_cast<T>(1.0f) / ReciprocalLengthFast();
   }
-  constexpr Vector operator/(T scalar) const {
-    assert(scalar != 0);
-    Vector result;
-    for (size_t i = 0; i < N; ++i)
-      result[i] = data[i] / scalar;
-    return result;
-  }
-  constexpr void operator+=(const Vector &other) const { this = this + other; }
-  constexpr void operator-=(const Vector &other) const { this = this - other; }
-  constexpr void operator*=(const Vector &other) const { this = this * other; }
-  constexpr void operator/=(const Vector &other) const { this = this / other; }
-
   constexpr T LengthSquared() const {
     T sum = 0;
-    for (const auto &val : data)
-      sum += val * val;
+    for (size_t i = 0; i < N; i++) {
+      sum += data[i] * data[i];
+    }
     return sum;
   }
-  constexpr T Length() const {
-    return std::sqrt(static_cast<T>(LengthSquared()));
-  }
-  constexpr void Normalize() const {
-    float len = Length();
-    if (len > 1e-6f) {
-      for (size_t i = 0; i < N; ++i)
-        data[i] = static_cast<T>(data[i] / len);
-    }
-  }
-  constexpr T Dot(const Vector &a, const Vector &b) const {
-    T result = 0;
-    for (size_t i = 0; i < N; ++i)
-      result += a[i] * b[i];
-    return result;
-  }
-  constexpr Vector Lerp(const Vector &a, const Vector &b, float blend) const {
-    Vector result;
-    for (size_t i = 0; i < N; ++i) {
-      result[i] = static_cast<T>(a[i] + (b[i] - a[i]) * blend);
+  constexpr Vector Abs() const {
+    Vector result = *this;
+    for (size_t i = 0; i < N; i++) {
+      result.data[i] = std::abs(result.data[i]);
     }
     return result;
+  }
+  constexpr Vector Round() const { return Round(*this); }
+  constexpr Vector Round(MidpointRounding rounding) const {
+    return Round(*this, rounding);
+  }
+  constexpr Vector Ceiling() const { return Ceiling(*this); }
+  constexpr Vector Floor() const { return Floor(*this); }
+  constexpr Vector Truncate() const { return Truncate(*this); }
+  Vector operator+(const Vector &a) const {
+    Vector res = *this;
+    for (size_t i = 0; i < N; i++)
+      res.data[i] += a.data[i];
+    return res;
+  };
+  Vector operator+=(const Vector &a) {
+    for (size_t i = 0; i < N; i++) {
+      data[i] += a.data[i];
+    }
+    return *this;
+  }
+  Vector operator-(const Vector &a) const {
+    Vector res = *this;
+    for (size_t i = 0; i < N; i++)
+      res.data[i] -= a.data[i];
+    return res;
+  }
+  Vector operator-=(const Vector &a) {
+    for (size_t i = 0; i < N; i++)
+      data[i] -= a.data[i];
+    return *this;
+  }
+  Vector operator*(const Vector &a) const {
+    Vector res = *this;
+    for (size_t i = 0; i < N; i++)
+      res.data[i] *= a.data[i];
+    return res;
+  }
+  Vector operator*=(const Vector &a) {
+    for (size_t i = 0; i < N; i++)
+      data[i] *= a.data[i];
+    return *this;
+  }
+  Vector operator/(const Vector &a) const {
+    Vector res = *this;
+    for (size_t i = 0; i < N; i++)
+      res.data[i] /= a.data[i];
+    return res;
+  }
+  Vector operator/=(const Vector &a) {
+    for (size_t i = 0; i < N; i++)
+      data[i] /= a.data[i];
+    return *this;
   }
 
-  constexpr int SizeInBytes() const { return sizeof(this); }
+  static Vector ComponentMin(const Vector &a, const Vector &b)
+    requires(sizeof(a) == sizeof(b))
+  {
+    Vector<N, T> m;
+    for (size_t i = 0; i < N; i++)
+      m.data[i] = a.data[i] < b.data[i] ? a.data[i] : b.data[i];
+    return m;
+  }
+  static Vector ComponentMax(const Vector &a, const Vector &b)
+    requires(sizeof(a) == sizeof(b))
+  {
+    Vector<N, T> m;
+    for (size_t i = 0; i < N; i++)
+      m.data[i] = a.data[i] > b.data[i] ? a.data[i] : b.data[i];
+    return m;
+  }
+  static Vector MagnitudeMin(const Vector &a, const Vector &b)
+    requires(sizeof(a) == sizeof(b))
+  {
+    return a.LengthSquared() < b.LengthSquared() ? a : b;
+  }
+  static Vector MagnitudeMax(const Vector &a, const Vector &b)
+    requires(sizeof(a) == sizeof(b))
+  {
+    return a.LengthSquared() > b.LengthSquared() ? a : b;
+  }
+  static Vector Clamp(const Vector &v, const Vector &min, const Vector &max)
+    requires(sizeof(v) == sizeof(min) && sizeof(min) == sizeof(max))
+  {
+    Vector res;
+    for (size_t i = 0; i < N; i++)
+      res.data[i] = v.data[i] < min.data[i]   ? min.data[i]
+                    : v.data[i] > max.data[i] ? max.data[i]
+                                              : v.data[i];
+    return res;
+  }
+  static Vector Abs(const Vector &v) {
+    Vector res;
+    for (size_t i = 0; i < N; i++)
+      res.data[i] = std::abs(v.data[i]);
+    return res;
+  }
+  static Vector Round(const Vector &v) {
+    Vector res;
+    for (size_t i = 0; i < N; i++)
+      res.data[i] = MathHelper::Round(v.data[i]);
+    return res;
+  }
+  static Vector Round(const Vector &v, MidpointRounding m) {
+    Vector res;
+    for (size_t i = 0; i < N; i++)
+      res.data[i] = MathHelper::Round(v.data[i], m);
+    return res;
+  }
+  static Vector Ceiling(const Vector &v) {
+    Vector res;
+    for (size_t i = 0; i < N; i++)
+      res.data[i] = std::ceil(v.data[i]);
+    return res;
+  }
+  static Vector Floor(const Vector &v) {
+    Vector res;
+    for (size_t i = 0; i < N; i++)
+      res.data[i] = std::floor(v.data[i]);
+    return res;
+  }
+  static Vector Truncate(const Vector &v) {
+    Vector res;
+    for (size_t i = 0; i < N; i++)
+      res.data[i] = std::trunc(v.data[i]);
+    return res;
+  }
+  static T Distance(const Vector &a, const Vector &b)
+    requires(sizeof(a) == sizeof(b))
+  {
+    return std::sqrt(DistanceSquared(a, b));
+  }
+  static T DistanceSquared(const Vector &a, const Vector &b)
+    requires(sizeof(a) == sizeof(b))
+  {
+    T res = static_cast<T>(0);
+    for (size_t i = 0; i < N; i++)
+      res += (b.data[i] - a.data[i]) * (b.data[i] - a.data[i]);
+    return res;
+  }
+  static Vector Normalize(const Vector &v) {
+    T scale = static_cast<T>(1.0f) / v.Length();
+    Vector res = v;
+    for (size_t i = 0; i < N; i++)
+      res.data[i] *= scale;
+    return res;
+  }
+  static Vector NormalizeFast(const Vector &v) {
+    T scale = MathHelper::InverseSqrtFast(v.LengthSquared());
+    Vector res = v;
+    for (size_t i = 0; i < N; i++)
+      res.data[i] *= scale;
+    return res;
+  }
 
   friend std::ostream &operator<<(std::ostream &os, const Vector<N, T> v) {
     os << "(";
@@ -135,22 +236,6 @@ template <size_t N, typename T = float> struct Vector {
     os << ")";
     return os;
   }
-
-  constexpr Vector ComponentMin(const Vector &a, const Vector &b) const {
-    Vector result;
-    for (size_t i = 0; i < N; ++i)
-      result[i] = std::min(a[i], b[i]);
-    return result;
-  }
-  constexpr Vector ComponentMax(const Vector &a, const Vector &b) const {
-    Vector result;
-    for (size_t i = 0; i < N; ++i)
-      result[i] = std::max(a[i], b[i]);
-    return result;
-  }
-
-  static Vector Zero() { return Vector(static_cast<T>(0)); }
-  static Vector One() { return Vector(static_cast<T>(1)); }
 };
 /*
  *  Standard Vectors
