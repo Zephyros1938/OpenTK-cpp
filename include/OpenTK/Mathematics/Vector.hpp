@@ -81,6 +81,16 @@ template <size_t N, typename T = float> struct Vector {
     }
     return sum;
   }
+  constexpr Vector Normalized() const {
+    Vector v = *this;
+    v.Normalize();
+    return v;
+  }
+  void Normalize() {
+    T scale = static_cast<T>(1.0f) / Length();
+    for (size_t i = 0; i < N; i++)
+      data[i] *= scale;
+  }
   constexpr Vector Abs() const {
     Vector result = *this;
     for (size_t i = 0; i < N; i++) {
@@ -357,6 +367,14 @@ template <size_t N, typename T = float> struct Vector {
     return Add(uPos, acV);
   }
 
+  constexpr static Vector Cross(const Vector &left, const Vector &right)
+    requires(N == 3)
+  {
+    return Vector{(left.Y() * right.Z()) - (left.Z() * right.Y()),
+                  (left.Z() * right.X()) - (left.X() * right.Z()),
+                  (left.X() * right.Y()) - (left.Y() * right.X())};
+  }
+
   friend Vector<N, bool> operator<(const Vector &a, const Vector &b) {
     return LessThan(a, b);
   }
@@ -380,6 +398,52 @@ template <size_t N, typename T = float> struct Vector {
     }
     os << ")";
     return os;
+  }
+
+  template <size_t S>
+  static constexpr Vector<S, T> GetSubVector(const Vector<N, T> &v,
+                                             size_t indexes[S])
+    requires(S <= N)
+  {
+    Vector<S, T> v_{};
+    for (size_t i = 0; i < S; i++)
+      v_.data[i] = v.data[indexes[i]];
+    return v_;
+  }
+  template <size_t S>
+  constexpr Vector<S, T> GetSubVector(size_t indexes[S])
+    requires(S <= N)
+  {
+    Vector<S, T> v_{};
+    for (size_t i = 0; i < S; i++)
+      v_.data[i] = data[indexes[i]];
+    return v_;
+  }
+  template <size_t... Is>
+  constexpr Vector<sizeof...(Is), T> GetSubVector() const {
+    static_assert(((Is < N) && ...), "Index out of bounds");
+    return {data[Is]...};
+  }
+  template <size_t S>
+  static constexpr void SetSubVector(const Vector<N, T> &orig,
+                                     const Vector<S, T> &sub, size_t indexes[S])
+    requires(S <= N)
+  {
+    for (size_t i = 0; i < S; i++)
+      orig.data[indexes[i]] = sub.data[i];
+  }
+  template <size_t S>
+  constexpr void SetSubVector(const Vector<S, T> &sub, size_t indexes[S])
+    requires(S <= N)
+  {
+    for (size_t i = 0; i < S; i++)
+      data[indexes[i]] = sub.data[i];
+  }
+  template <size_t... Is>
+  constexpr void SetSubVector(const Vector<sizeof...(Is), T> &sub) {
+    static_assert(((Is < N) && ...), "Index out of bounds");
+    size_t i = 0;
+    ((data[Is] = sub.data[i++]), ...);
   }
 };
 /*

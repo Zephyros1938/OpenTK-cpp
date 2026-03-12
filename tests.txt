@@ -1,2 +1,3 @@
 gfwk tests/GraphicsFrameworkTest.cpp
 vector tests/VectorTest.cpp
+quat tests/QuaternionTest.cpp
